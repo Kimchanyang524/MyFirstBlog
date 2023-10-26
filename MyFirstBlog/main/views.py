@@ -5,4 +5,4 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "main/index.html")

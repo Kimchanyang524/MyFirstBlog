@@ -19,12 +19,19 @@ from django.contrib.auth.decorators import login_required
 
 
 class PostList(ListView):
-    pass
+    model = Post
+    ordering = "-pk"
 
 
 class PostDetail(DetailView):
-    pass
+    model = Post
 
 
-postlist = PostList.as_view()
-postdetail = PostDetail.as_view()
+class PostCreateView(CreateView):
+    model = Post
+    template_name = ".html"
+
+
+post_list = PostList.as_view()
+post_detail = PostDetail.as_view()
+post_create = PostCreateView.as_view()
