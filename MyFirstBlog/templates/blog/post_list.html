@@ -1,5 +1,5 @@
-{% extends "blog/base.html" %}
-{% block views %}
+{% extends "base.html" %}
+{% block main %}
 {% load static %}
 <div class="banner">
     <div class="max-width">
@@ -7,7 +7,8 @@
             <p class="sub-text">React Blog</p>
             <p class="main-text">My BLOG</p>
             <p class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nostrum dolor provident beatae deserunt magnam, illo neque. Maiores ipsum commodi dolorum beatae aliquid laboriosam est
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nostrum dolor provident beatae
+                deserunt magnam, illo neque. Maiores ipsum commodi dolorum beatae aliquid laboriosam est
             </p>
         </div>
     </div>
@@ -19,9 +20,9 @@
         <ul class="posts">
             {% for post in object_list %}
             <li>
-                <a href="{% url "post_detail" post.id %}" class="post">
+                <a href="{% url 'post_detail' post.id %}" class="post">
                     <article>
-                        <img src="{% static './images/post-img6.jpg' %}" alt="">
+                        <img src="{{ post.head_image.url }}" alt="">
                         <div class="contents-wrap">
                             <!-- category -->
                             <dl class="category">
@@ -36,7 +37,8 @@
                             <!-- author -->
                             <dl class="author-wrap">
                                 <dt class="a11y-hidden">작성자</dt>
-                                <dd class="author"><img src="{% static './images/profile.jpg' %}" alt="">{{post.author}}</dd>
+                                <dd class="author"><img src="{% static './images/profile.jpg' %}" alt="">{{post.author}}
+                                </dd>
                                 <dt class="a11y-hidden">작성일자</dt>
                                 <dd class="created">{{post.created_at|date:'Y.m.d'}}</dd>
                             </dl>
@@ -61,13 +63,13 @@
             <p class="user-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             <h3>Categories</h3>
             <ul class="categories">
-                <li><a href="#">Life</a></li>
-                <li><a href="#">Style</a></li>
-                <li><a href="#">Tech</a></li>
-                <li><a href="#">Sport</a></li>
-                <li><a href="#">Photo</a></li>
-                <li><a href="#">Develop</a></li>
-                <li><a href="#">Music</a></li>
+                <li><a href="#">한식</a></li>
+                <li><a href="#">중식</a></li>
+                <li><a href="#">일식</a></li>
+                <li><a href="#">양식</a></li>
+                <li><a href="#">집밥</a></li>
+                <li><a href="#">외식</a></li>
+                <li><a href="#">간편식</a></li>
             </ul>
             <h3>Follow</h3>
             <ul class="sns">
@@ -96,4 +98,4 @@
         <!-- //about -->
     </div>
 </main>
-{% endblock views %}
+{% endblock main %}

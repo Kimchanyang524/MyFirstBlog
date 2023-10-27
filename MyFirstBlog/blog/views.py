@@ -14,6 +14,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
 )
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 
@@ -27,11 +28,16 @@ class PostDetail(DetailView):
     model = Post
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    template_name = ".html"
+    fields = "__all__"
+    template_name = "blog/post_form.html"
 
 
 post_list = PostList.as_view()
 post_detail = PostDetail.as_view()
 post_create = PostCreateView.as_view()
+
+
+def select5(request):
+    return Post.objects.last()
