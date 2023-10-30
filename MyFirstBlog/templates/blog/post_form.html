@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block main %}
 {% load static %}
+{% if object.head_image %}
+<div class="banner" style="background-image: url({{ object.head_image.url }})">
+{% else %}
 <div class="banner">
+{% endif %}
     <div class="max-width">
     </div>
 </div>
@@ -14,16 +18,20 @@
                         {% csrf_token %}
                         <div class="mb-3 mt-3">
                             <label for="title" class="form-label">제목:</label>
-                            <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" name="title">
+                            <input type="text" class="form-control" id="title" value="{{ object.title }}" placeholder="제목을 입력하세요" name="title">
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="content" class="form-label">내용:</label>
                             <textarea class="form-control" name="content" id="content" cols="30" rows="200"
-                                placeholder="내용을 입력하세요"></textarea>
+                                placeholder="내용을 입력하세요">{{ object.content }}</textarea>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="head_image" class="form-label">썸네일</label>
+                            {% if object.head_image %}
+                            <input type="file" name="head_image" value="{{ object.head_image }}" accept="image/*" id="head_image">
+                            {% else %}
                             <input type="file" name="head_image" accept="image/*" id="head_image">
+                            {% endif %}
                         </div>
                         <button type="submit" class="button">작성</button>
                     </form>

@@ -38,21 +38,29 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            print("---------------")
-            print(form.cleaned_data["head_image"])
-            print("---------------")
             post.save()
         return redirect("post_list")
 
 
 class PostUpdateView(UpdateView):
     model = Post
-    template_name = "post_form.html"
+    fields = "__all__"
+    template_name = "blog/post_form.html"
+
+    def post(self, request, pk):
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = Post.objects.get(pk=pk)
+            post.title = form.cleaned_data["title"]
+            post.content = form.cleaned_data["content"]
+            post.head_image = form.cleaned_data["head_image"]
+            post.save()
+        return redirect("post_list")
 
 
 class PostDeleteView(DeleteView):
     model = Post
-    template_name = ".html"
+    success_url = reverse_lazy("post_list")
 
 
 post_list = PostList.as_view()

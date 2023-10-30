@@ -1,0 +1,7 @@
+<form action="" method="post" id="delete_form">{% csrf_token %}</form>
+<script>
+    delete_form = document.getElementById('delete_form')
+
+    alert('성공적으로 삭제되었습니다!')
+    delete_form.submit()
+</script>

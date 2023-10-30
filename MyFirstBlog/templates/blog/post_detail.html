@@ -1,69 +1,74 @@
 {% extends "base.html" %}
 {% block main %}
 {% load static %}
-{% if post.head_image %}
+{% if object.head_image %}
 <div class="banner" style="background-image: url({{ object.head_image.url }})">
-    {% else %}
-    <div class="banner">
-        {% endif %}
-        <div class="max-width">
-            <div class="banner-contents">
-                <p class="today">{{ object.created_at|date:'M' }} <em>{{ object.created_at|date:'d' }}</em> {{
-                    object.created_at|date:'D' }}</p>
-            </div>
+{% else %}
+<div class="banner">
+{% endif %}
+    <div class="max-width">
+        <div class="banner-contents">
+            <p class="today">{{ object.created_at|date:'M' }} <em>{{ object.created_at|date:'d' }}</em> {{ object.created_at|date:'D' }}</p>
         </div>
     </div>
-    <div class="view">
-        <div class="max-width">
-            <section class="wrap-box">
-                <div class="inner">
-                    <!-- author -->
-                    <dl class="author-wrap">
-                        <dt class="a11y-hidden">작성자</dt>
-                        <dd class="author"><img src="{% static './images/profile.jpg' %}" alt="">{{ object.author }}
-                        </dd>
-                        <dt class="a11y-hidden">작성일자</dt>
-                        <dd class="created">{{ object.created_at|date:'Y년 m월 d일 D' }}</dd>
-                    </dl>
-                    <!-- //author -->
+</div>
+<div class="view">
+    <div class="max-width">
+        <section class="wrap-box">
+            <div class="inner">
+                <!-- author -->
+                <dl class="author-wrap">
+                    <dt class="a11y-hidden">작성자</dt>
+                    <dd class="author"><img src="{% static './images/profile.jpg' %}" alt="">{{ object.author }}</dd>
+                    <dt class="a11y-hidden">작성일자</dt>
+                    <dd class="created">{{ object.created_at|date:'Y년 m월 d일 D' }}</dd>
+                </dl>
+                <!-- //author -->
 
-                    <!-- category -->
-                    <dl class="category">
-                        <dt class="a11y-hidden">Category</dt>
-                        {% for tag in object.tags.iterator %}
-                        <dd>{{tag}}</dd>
-                        {% endfor %}
-                    </dl>
-                    <!-- //category -->
-                    <div class="title-wrap">
-                        <h2>{{ object.title }}</h2>
-                        <button class="btn-like">Like</button>
-                    </div>
-                    <hr>
-                    <div class="view-contents">
-                        <p>
-                            {{ object.content }}
-                        </p>
-                    </div>
-                    {% if request.user.is_staff or request.user == object.author %}
-                    <div class="btn-group">
-                        <a href="{% url 'post_update' object.id %}" class="btn-modify">
-                            <span class="a11y-hidden">modify</span>
-                        </a>
-                        <button type="button" class="btn-delete">
-                            <span id="deletebt" class="a11y-hidden">delete</span>
-                        </button>
-                    </div>
-                    {% endif %}
-                    <a href="{% url 'post_list' %}" class="btn-back">
-                        <span class="a11y-hidden">Back</span>
-                    </a>
+                <!-- category -->
+                <dl class="category">
+                    <dt class="a11y-hidden">Category</dt>
+                    {% for tag in object.tags.iterator %}
+                    <dd>{{tag}}</dd>
+                    {% endfor %}
+                </dl>
+                <!-- //category -->
+                <div class="title-wrap">
+                    <h2>{{ object.title }}</h2>
+                    <button class="btn-like">Like</button>
                 </div>
-            </section>
-        </div>
+                <hr>
+                <div class="view-contents">
+                    <p>
+                        {{ object.content }}
+                    </p>
+                </div>
+                {% if request.user.is_staff or request.user == object.author %}
+                <div class="btn-group">
+                    <a href="{% url 'post_update' object.id %}" class="btn-modify">
+                        <span class="a11y-hidden">modify</span>
+                    </a>
+                    <button id="delete_bt" type="button" class="btn-delete">
+                        <span id="delete_sp" class="a11y-hidden">delete</span>
+                    </button>
+                </div>
+                {% endif %}
+                <a href="{% url 'post_list' %}" class="btn-back">
+                    <span class="a11y-hidden">Back</span>
+                </a>
+            </div>
+        </section>
     </div>
+</div>
 
-    <script>
-        const deletebt = document.getElementById('deletebt')
-    </script>
-    {% endblock main %}
+<script>
+    const delete_bt = document.getElementById('delete_bt')
+
+    delete_bt.addEventListener('click', ()=>{
+        delete_confirm = confirm('정말로 삭제하시겠습니까?')
+        if (delete_confirm) {
+            window.location.href="{% url 'post_delete' object.id %}"
+        }
+    })
+</script>
+{% endblock main %}
