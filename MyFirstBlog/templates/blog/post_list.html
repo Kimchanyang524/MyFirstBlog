@@ -21,7 +21,11 @@
             <li>
                 <a href="{% url 'post_detail' post.id %}" class="post">
                     <article>
+                        {% if post.head_image %}
                         <img src="{{ post.head_image.url }}" alt="">
+                        {% else %}
+                        <img src="{% static 'images/background.jpg' %}" alt="">
+                        {% endif %}
                         <div class="contents-wrap">
                             <!-- category -->
                             <dl class="category">

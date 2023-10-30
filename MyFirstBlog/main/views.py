@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 
-# costom.py
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+# Create your views here.
 
 
 def index(request):

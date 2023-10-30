@@ -33,11 +33,30 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = "__all__"
     template_name = "blog/post_form.html"
 
+    def post(self, request):
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            print("---------------")
+            print(form.cleaned_data["head_image"])
+            print("---------------")
+            post.save()
+        return redirect("post_list")
+
+
+class PostUpdateView(UpdateView):
+    model = Post
+    template_name = "post_form.html"
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = ".html"
+
 
 post_list = PostList.as_view()
 post_detail = PostDetail.as_view()
 post_create = PostCreateView.as_view()
-
-
-def select5(request):
-    return Post.objects.last()
+post_update = PostUpdateView.as_view()
+post_delete = PostDeleteView.as_view()

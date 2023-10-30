@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block main %}
+{% load static %}
+<div class="banner">
+    <div class="max-width">
+    </div>
+</div>
+<div class="write">
+    <div class="max-width">
+        <section class="wrap-box">
+            <div class="inner">
+                <div class="view-contents">
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3 mt-3">
+                            <label for="username" class="form-label">아이디:</label>
+                            <input type="text" class="form-control" id="username" placeholder="아이디를 입력하세요" name="username">
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="password" class="form-label">비밀번호:</label>
+                            <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요." name="password">
+                        </div>
+                        <button type="submit" class="button">로그인</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock main %}

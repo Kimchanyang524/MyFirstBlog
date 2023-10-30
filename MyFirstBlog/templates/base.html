@@ -15,7 +15,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <link rel="stylesheet" href="{% static './css/global.css' %}">
 
     <!-- layout -->
@@ -67,21 +67,21 @@
                 <li>
                     <button class="button white">
                         <img src="{% static './assets/icon-logout.svg' %}" alt="">
-                        <span>로그아웃</span>
+                        <span class="logout">로그아웃</span>
                     </button>
                 </li>
                 {% else %}
                 <li>
-                    <a href="{% url 'post_create' %}" class="button">
+                    <a href="{% url 'register' %}" class="button">
                         <img src="{% static './assets/icon-register.svg' %}" alt="">
                         <span>회원가입</span>
                     </a>
                 </li>
                 <li>
-                    <button class="button white">
+                    <a href="{% url 'login' %}" class="button white">
                         <img src="{% static './assets/icon-login.svg' %}" alt="">
                         <span>로그인</span>
-                    </button>
+                    </a>
                 </li>
                 {% endif %}
             </ul>
@@ -96,5 +96,15 @@
         </div>
     </footer>
 </body>
+<script>
+    const logout = document.querySelector('.logout')
+
+    logout.addEventListener('click', function () {
+        const form = confirm('정말 로그아웃하시겠습니까?')
+        if (form) {
+            window.location.href = "{% url 'logout' %}"
+        }
+    })
+</script>
 
 </html>

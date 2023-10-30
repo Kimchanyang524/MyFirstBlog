@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block main %}
+{% load static %}
+<div class="banner">
+    <div class="max-width">
+    </div>
+</div>
+<div class="write">
+    <div class="max-width">
+        <section class="wrap-box">
+            <div class="inner">
+                <div class="view-contents">
+                    <div class="mb-3 mt-3">
+                        아이디: {{ request.user.username }}
+                        비밀번호: {{ request.user.username }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock main %}

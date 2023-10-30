@@ -10,7 +10,7 @@
         <section class="wrap-box">
             <div class="inner">
                 <div class="view-contents">
-                    <form action="#" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="mb-3 mt-3">
                             <label for="title" class="form-label">제목:</label>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="head_image" class="form-label">썸네일</label>
-                            <input type="file" id="head_image" name="head_image" accept="image/*">
+                            <input type="file" name="head_image" accept="image/*" id="head_image">
                         </div>
                         <button type="submit" class="button">작성</button>
                     </form>
