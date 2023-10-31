@@ -12,34 +12,59 @@
         </div>
     </div>
 </div>
-<div class="view">
+
+<main>
     <div class="max-width">
-        <section class="wrap-box">
-            <div class="inner">
-                <table class="table">
-                    <thead style="border-bottom: 2px solid black;">
-                        <tr>
-                            <th class='col-md-1'>글번호</th>
-                            <th class='col-md-6'>제목</th>
-                            <th class='col-md-2'>작성자</th>
-                            <th class='col-md-2'>작성일자</th>
-                            <th class='col-md-1'>조회수</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for post in object_list %}
-                        <tr>
-                            <td>{{ post.id }}</td>
-                            <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
-                            <td>{{ post.author }}</td>
-                            <td>{{ post.created_at|date:'Y.m.d' }}</td>
-                            <td>{{ post.view_count }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        <div class="view">
+            <section class="wrap-box">
+                <div class="inner">
+                    <table class="table">
+                        <thead style="border-bottom: 2px solid black;">
+                            <tr>
+                                <th class='col-md-1'>글번호</th>
+                                <th class='col-md-6'>제목</th>
+                                <th class='col-md-2'>작성자</th>
+                                <th class='col-md-2'>작성일자</th>
+                                <th class='col-md-1'>조회수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for post in object_list %}
+                            <tr>
+                                <td>{{ post.id }}</td>
+                                <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
+                                <td>{{ post.author }}</td>
+                                <td>{{ post.created_at|date:'Y.m.d' }}</td>
+                                <td>{{ post.view_count }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-center">
+                        이전 1 2 3 4 5 6 7 8 9 10 다음
+                    </div>
+                </div>
+            </section>
+        </div>
+        <aside class="about">
+            <h3>카테고리</h3>
+            <ul class="categories">
+                {{post.tag}}
+                <li><a href="#">한식</a></li>
+                <li><a href="#">중식</a></li>
+                <li><a href="#">일식</a></li>
+                <li><a href="#">양식</a></li>
+                <li><a href="#">집밥</a></li>
+                <li><a href="#">외식</a></li>
+                <li><a href="#">간편식</a></li>
+            </ul>
+            <h3>검색</h3>
+            <form class="d-flex" action="" method="get">
+                <input class="form-control me-2" type="text" placeholder="Search">
+                <img src="{% static './assets/icon-search.svg' %}" alt="My Blog" class="btn"
+                    style="width: 40px;height: 40px;">
+            </form>
+        </aside>
     </div>
-</div>
+</main>
 {% endblock main %}
