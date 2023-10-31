@@ -50,7 +50,7 @@
             <h3>카테고리</h3>
             <ul class="categories">
                 {{post.tag}}
-                <li><a href="#">한식</a></li>
+                <li><a href="{% url 'post_search_tag' 'korean_food' %}">한식</a></li>
                 <li><a href="#">중식</a></li>
                 <li><a href="#">일식</a></li>
                 <li><a href="#">양식</a></li>

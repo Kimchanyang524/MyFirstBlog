@@ -5,6 +5,7 @@ from django.http import HttpRequest, HttpResponse, Http404
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 
 # custom .py
 from .models import Post, Comment
@@ -25,6 +26,55 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 class PostList(ListView):
     model = Post
     ordering = "-pk"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        page = self.request.GET.get("page")
+
+        if not page:
+            page = 1
+        try:
+            queryset = queryset[(page - 1) * 30 : page * 30]
+        except:
+            queryset = queryset[(page - 1) * 30 :]
+        return queryset
+
+
+class PostSearch(ListView):
+    model = Post
+    ordering = "-pk"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        page = self.request.GET.get("page")
+
+        if not page:
+            page = 1
+        try:
+            queryset = queryset[(page - 1) * 30 : page * 30]
+        except:
+            queryset = queryset[(page - 1) * 30 :]
+        return queryset
+
+
+class PostSearchTag(ListView):
+    model = Post
+    ordering = "-pk"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        page = self.request.GET.get("page")
+        tag = self.kwargs["tag"]
+        queryset = queryset.filter(tags__name=tag)
+
+        # if not page:
+        #     page = 1
+        # page = int(page)
+        # try:
+        #     queryset = queryset[(page - 1) * 30 : page * 30]
+        # except:
+        #     queryset = queryset[(page - 1) * 30 :]
+        return queryset
 
 
 class PostDetail(DetailView):
@@ -80,10 +130,3 @@ class PostUpdateView(UserPassesTestMixin, UpdateView):
 class PostDeleteView(DeleteView):
     model = Post
     success_url = reverse_lazy("post_list")
-
-
-post_list = PostList.as_view()
-post_detail = PostDetail.as_view()
-post_create = PostCreateView.as_view()
-post_update = PostUpdateView.as_view()
-post_delete = PostDeleteView.as_view()

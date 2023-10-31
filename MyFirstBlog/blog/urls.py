@@ -2,9 +2,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.post_list, name="post_list"),
-    path("<int:pk>/", views.post_detail, name="post_detail"),
-    path("write/", views.post_create, name="post_create"),
-    path("edit/<int:pk>/", views.post_update, name="post_update"),
-    path("delete/<int:pk>", views.post_delete, name="post_delete"),
+    path("", views.PostList.as_view(), name="post_list"),
+    path("<int:pk>/", views.PostDetail.as_view(), name="post_detail"),
+    path("search/", views.PostSearch.as_view(), name="post_search"),
+    path("search/<str:tag>/", views.PostSearchTag.as_view(), name="post_search_tag"),
+    path("write/", views.PostCreateView.as_view(), name="post_create"),
+    path("edit/<int:pk>/", views.PostUpdateView.as_view(), name="post_update"),
+    path("delete/<int:pk>", views.PostDeleteView.as_view(), name="post_delete"),
 ]
