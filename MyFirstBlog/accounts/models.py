@@ -8,7 +8,7 @@ def user_directory_path(instance, filename):
     instance는 모델 인스턴스 (예: User)\n
     filename은 업로드된 파일의 이름
     """
-    return f"accounts/images/user_{instance.id}/{filename}"
+    return f"accounts/images/user_{instance.username}/{filename}"
 
 
 class User(AbstractUser):

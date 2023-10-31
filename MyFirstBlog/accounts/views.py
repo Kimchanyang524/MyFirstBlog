@@ -1,6 +1,7 @@
+from typing import Any
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
 from django.contrib.auth import authenticate
 from django.conf import settings
 from django.urls import reverse_lazy
@@ -17,11 +18,17 @@ from .models import User
 from .forms import UserForm
 
 
-class MyCreateView(CreateView):
+class MyRegister(CreateView):
     model = User
     form_class = UserForm
     template_name = "accounts/register.html"
-    success_url = reverse_lazy("login")
+
+    def post(self, request):
+        form = UserForm(request.POST, request.FILES)
+        if form.is_valid():
+            print(form.cleaned_data)
+            form.save()
+            return redirect("post_list")
 
 
 class MyLoginView(LoginView):
@@ -59,7 +66,7 @@ class MyLogoutView(LoginRequiredMixin, LogoutView):
 
 login = MyLoginView.as_view()
 logout = MyLogoutView.as_view()
-register = CreateView.as_view()
+register = MyRegister.as_view()
 
 
 @login_required

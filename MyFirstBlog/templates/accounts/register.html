@@ -10,10 +10,11 @@
         <section class="wrap-box">
             <div class="inner">
                 <div class="view-contents">
-                    <form action="#" method="post" id="register_form">
+                    <form action="" method="post" id="register_form" enctype="multipart/form-data">
                         {% csrf_token %}
-                        *이 붙은 항목은 반드시 입력해야 합니다.
-                        <div class="mb-3 mt-3">
+                        {{ form.as_p }}
+                        <button type="submit" id="register" class="button">회원가입</button>
+                        <!-- <div class="mb-3 mt-3">
                             <label for="username" class="form-label">*아이디:</label>
                             <input type="text" class="form-control" id="username" placeholder="아이디를 입력하세요"
                                 name="username">
@@ -36,15 +37,16 @@
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="email" class="form-label">이메일:</label>
-                            <input type="email" class="form-control" id="email" placeholder="비밀번호를 입력하세요." name="email">
+                            <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요." name="email">
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="profile_img" class="form-label">프로필사진:</label>
-                            <input type="file" class="form-control" id="profile_img" placeholder="비밀번호를 입력하세요."
+                            <input type="file" class="form-control" id="profile_img" placeholder="사진을 입력하세요."
                                 name="profile_img">
                         </div>
-                        <button type="button" id="register" class="button">회원가입</button>
+                        <button type="submit" id="register" class="button">회원가입</button> -->
                     </form>
+
                 </div>
             </div>
         </section>
@@ -59,7 +61,7 @@
     const email = document.getElementById('email')
     const register = document.getElementById('register')
     const register_form = document.getElementById('register_form')
-    const reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+    const reg_email = /^([0-9a-zA-Z]+)@([0-9a-zA-Z]+)(\.[0-9a-zA-Z]+){1,2}$/;
 
     password.oninput = function () {
         if (password.value != '') {
@@ -84,19 +86,20 @@
         }
     }
 
-    register.addEventListener('click', () => {
-        if (username.value == '') {
-            alert('아이디는 반드시 입력해야합니다!')
-        } else if (password.value == '') {
-            alert('비밀번호는 반드시 입력해야합니다!')
-        } else if (password.value != password_check.value) {
-            alert('비밀번호 확인을 올바르게 입력해 주십시오.')
-        } else if (email.value != '' & reg_email.test(email.value)) {
-            alert('이메일 형식이 잘못되었습니다.')
-        } else {
-            alert('성공적으로 가입되었습니다.')
-            register_form.submit()
-        }
-    })
+    // register.addEventListener('click', (e) => {
+    //     e.preventDefault()
+    //     if (username.value == '') {
+    //         alert('아이디는 반드시 입력해야합니다!')
+    //     } else if (password.value == '') {
+    //         alert('비밀번호는 반드시 입력해야합니다!')
+    //     } else if (password.value != password_check.value) {
+    //         alert('비밀번호 확인을 올바르게 입력해 주십시오.')
+    //     } else if (email.value != '' & !reg_email.test(email.value)) {
+    //         alert('이메일 형식이 잘못되었습니다.')
+    //     } else {
+    //         alert('성공적으로 가입되었습니다.')
+    //         register_form.submit()
+    //     }
+    // })
 </script>
 {% endblock main %}
