@@ -4,101 +4,42 @@
 <div class="banner">
     <div class="max-width">
         <div class="banner-contents">
-            <p class="sub-text">React Blog</p>
-            <p class="main-text">My BLOG</p>
+            <p class="sub-text">음식 리뷰 블로그</p>
+            <p class="main-text">Food</p>
             <p class="description">
-                {% lorem 1 b %}
+                여러가지 종류의 음식을 요리하거나 사먹고 리뷰하는 블로그입니다.
             </p>
         </div>
     </div>
 </div>
-<main>
-    <!-- posts -->
+<div class="view">
     <div class="max-width">
-        <h2 class="a11y-hidden">Post</h2>
-        <ul class="posts">
-            {% for post in object_list %}
-            <li>
-                <a href="{% url 'post_detail' post.id %}" class="post">
-                    <article>
-                        {% if post.head_image %}
-                        <img src="{{ post.head_image.url }}" alt="">
-                        {% else %}
-                        <img src="{% static 'images/background.jpg' %}" alt="">
-                        {% endif %}
-                        <div class="contents-wrap">
-                            <!-- category -->
-                            <dl class="category">
-                                <dt class="a11y-hidden">Category</dt>
-                                <dd>Life</dd>
-                                <dd>Style</dd>
-                            </dl>
-                            <!-- //category -->
-
-                            <h3>{{post.title}}</h3>
-
-                            <!-- author -->
-                            <dl class="author-wrap">
-                                <dt class="a11y-hidden">작성자</dt>
-                                <dd class="author"><img src="{% static './images/profile.jpg' %}" alt="">{{post.author}}
-                                </dd>
-                                <dt class="a11y-hidden">작성일자</dt>
-                                <dd class="created">{{post.created_at|date:'Y.m.d'}}</dd>
-                            </dl>
-                            <!-- //author -->
-
-                            <p class="post-description">
-                                {{post.content}}
-                            </p>
-                        </div>
-                    </article>
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-        <!-- //posts -->
-
-        <!-- about -->
-        <aside class="about">
-            <h2>About Me</h2>
-            <img src="{% static './images/profile.jpg' %}" alt="" class="user-profile">
-            <p class="user-name">Chilli</p>
-            <p class="user-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <h3>Categories</h3>
-            <ul class="categories">
-                <li><a href="#">한식</a></li>
-                <li><a href="#">중식</a></li>
-                <li><a href="#">일식</a></li>
-                <li><a href="#">양식</a></li>
-                <li><a href="#">집밥</a></li>
-                <li><a href="#">외식</a></li>
-                <li><a href="#">간편식</a></li>
-            </ul>
-            <h3>Follow</h3>
-            <ul class="sns">
-                <li>
-                    <a href="#">
-                        <img src="{% static './assets/Facebook.svg' %}" alt="Facebook">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="{% static './assets/Twitter.svg' %}" alt="Twitter">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="{% static './assets/Instagram.svg' %}" alt="Instagram">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="{% static './assets/GitHub.svg' %}" alt="GitHub">
-                    </a>
-                </li>
-            </ul>
-        </aside>
-        <!-- //about -->
+        <section class="wrap-box">
+            <div class="inner">
+                <table class="table">
+                    <thead style="border-bottom: 2px solid black;">
+                        <tr>
+                            <th class='col-md-1'>글번호</th>
+                            <th class='col-md-6'>제목</th>
+                            <th class='col-md-2'>작성자</th>
+                            <th class='col-md-2'>작성일자</th>
+                            <th class='col-md-1'>조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in object_list %}
+                        <tr>
+                            <td>{{ post.id }}</td>
+                            <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
+                            <td>{{ post.author }}</td>
+                            <td>{{ post.created_at|date:'Y.m.d' }}</td>
+                            <td>{{ post.view_count }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
-</main>
+</div>
 {% endblock main %}

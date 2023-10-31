@@ -55,7 +55,17 @@
                 {% if request.user.is_authenticated %}
                 <li class="profile-img">
                     <a href="#">
-                        <img src="{% static './assets/profile.jpg' %}" alt="My Page">
+                        {% if request.user.profile_img %}
+                        <img src="{{ request.user.profile_img.url }}" alt="My Page">
+                        {% else %}
+                        <img src="{% static './assets/blank_profile.png' %}" alt="My Page">
+                        {% endif %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'post_list' %}" class="button white">
+                        <img src="{% static './assets/icon-postlist.svg' %}" alt="">
+                        <span>글목록</span>
                     </a>
                 </li>
                 <li>
@@ -71,6 +81,12 @@
                     </button>
                 </li>
                 {% else %}
+                <li>
+                    <a href="{% url 'post_list' %}" class="button white">
+                        <img src="{% static './assets/icon-postlist.svg' %}" alt="">
+                        <span>글목록</span>
+                    </a>
+                </li>
                 <li>
                     <a href="{% url 'register' %}" class="button">
                         <img src="{% static './assets/icon-register.svg' %}" alt="">
