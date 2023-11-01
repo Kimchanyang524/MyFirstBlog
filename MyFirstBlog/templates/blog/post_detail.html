@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block main %}
 {% load static %}
-{% if object.head_image %}
-<div class="banner" style="background-image: url({{ object.head_image.url }})">
+{% if post.head_image %}
+<div class="banner" style="background-image: url({{ post.head_image.url }})">
 {% else %}
 <div class="banner">
 {% endif %}
     <div class="max-width">
         <div class="banner-contents">
-            <p class="today">{{ object.created_at|date:'M' }} <em>{{ object.created_at|date:'d' }}</em> {{ object.created_at|date:'D' }}</p>
+            <p class="today">{{ post.created_at|date:'M' }} <em>{{ post.created_at|date:'d' }}</em> {{ post.created_at|date:'D' }}</p>
         </div>
     </div>
 </div>
@@ -19,33 +19,33 @@
                 <!-- author -->
                 <dl class="author-wrap">
                     <dt class="a11y-hidden">작성자</dt>
-                    <dd class="author"><img src="{% static './images/profile.jpg' %}" alt="">{{ object.author }}</dd>
+                    <dd class="author"><img src="{% static './images/profile.jpg' %}" alt="">{{ post.author }}</dd>
                     <dt class="a11y-hidden">작성일자</dt>
-                    <dd class="created">{{ object.created_at|date:'Y년 m월 d일 D' }}</dd>
+                    <dd class="created">{{ post.created_at|date:'Y년 m월 d일 D' }}</dd>
                 </dl>
                 <!-- //author -->
 
                 <!-- category -->
                 <dl class="category">
                     <dt class="a11y-hidden">Category</dt>
-                    {% for tag in object.tags.iterator %}
+                    {% for tag in post.tags.iterator %}
                     <dd>{{tag}}</dd>
                     {% endfor %}
                 </dl>
                 <!-- //category -->
                 <div class="title-wrap">
-                    <h2>{{ object.title }}</h2>
+                    <h2>{{ post.title }}</h2>
                     <button class="btn-like">Like</button>
                 </div>
                 <hr>
                 <div class="view-contents">
                     <p>
-                        {{ object.content }}
+                        {{ post.content }}
                     </p>
                 </div>
-                {% if request.user.is_staff or request.user == object.author %}
+                {% if request.user.is_staff or request.user == post.author %}
                 <div class="btn-group">
-                    <a href="{% url 'post_update' object.id %}" class="btn-modify">
+                    <a href="{% url 'post_update' post.id %}" class="btn-modify">
                         <span class="a11y-hidden">modify</span>
                     </a>
                     <button id="delete_bt" type="button" class="btn-delete">
@@ -67,7 +67,7 @@
     delete_bt.addEventListener('click', ()=>{
         delete_confirm = confirm('정말로 삭제하시겠습니까?')
         if (delete_confirm) {
-            window.location.href="{% url 'post_delete' object.id %}"
+            window.location.href="{% url 'post_delete' post.id %}"
         }
     })
 </script>

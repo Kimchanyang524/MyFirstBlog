@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 # custom .py
 from .models import Post, Comment
@@ -22,74 +23,74 @@ from django.views.generic import (
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
+pageslice = 30
+
+
+def paging(queryset, page):
+    if not page:
+        page = 1
+    page = int(page)
+    try:
+        queryset = queryset[(page - 1) * pageslice : page * pageslice]
+    except:
+        queryset = queryset[(page - 1) * pageslice :]
+    return queryset
+
 
 class PostList(ListView):
     model = Post
     ordering = "-pk"
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        page = self.request.GET.get("page")
-
-        if not page:
-            page = 1
-        try:
-            queryset = queryset[(page - 1) * 30 : page * 30]
-        except:
-            queryset = queryset[(page - 1) * 30 :]
-        return queryset
+    context_object_name = "posts"
+    paginate_by = pageslice
+    page_kwarg = "page"
 
 
 class PostSearch(ListView):
     model = Post
     ordering = "-pk"
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        page = self.request.GET.get("page")
-
-        if not page:
-            page = 1
-        try:
-            queryset = queryset[(page - 1) * 30 : page * 30]
-        except:
-            queryset = queryset[(page - 1) * 30 :]
-        return queryset
+    context_object_name = "posts"
+    paginate_by = pageslice
+    page_kwarg = "page"
 
 
 class PostSearchTag(ListView):
     model = Post
     ordering = "-pk"
+    context_object_name = "posts"
+    paginate_by = pageslice
+    page_kwarg = "page"
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        page = self.request.GET.get("page")
         tag = self.kwargs["tag"]
         queryset = queryset.filter(tags__name=tag)
-
-        # if not page:
-        #     page = 1
-        # page = int(page)
-        # try:
-        #     queryset = queryset[(page - 1) * 30 : page * 30]
-        # except:
-        #     queryset = queryset[(page - 1) * 30 :]
         return queryset
 
 
 class PostDetail(DetailView):
     model = Post
+    context_object_name = "post"
+
+    def get(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        post.view_count += 1
+        post.save()
+        contaxt = {
+            "post": post,
+        }
+        return render(request, "blog/post_detail.html", contaxt)
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = "__all__"
+    form_class = PostForm
     template_name = "blog/post_form.html"
 
     def post(self, request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
+            post.tags.set(form.cleaned_data["tags"])
             post.author = request.user
             post.save()
         return redirect("post_list")

@@ -28,36 +28,33 @@
                             </div>
                             <div class="mb-3 mt-3">
                                 <label for="head_image" class="form-label">썸네일</label>
-                                {% if object.head_image %}
-                                <input type="file" name="head_image" value="{{ object.head_image }}" accept="image/*"
-                                    id="head_image">
-                                {% else %}
                                 <input type="file" name="head_image" accept="image/*" id="head_image">
-                                {% endif %}
                             </div>
                             <div class="form-check mb-3">
-                                <p>카테고리</p>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="tag" value="한식"> 한식
-                                </label>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="tag" value="중식"> 중식
-                                </label>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="tag" value="일식"> 일식
-                                </label>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="tag" value="양식"> 양식
-                                </label>
-                                <label class "form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="tag" value="집밥"> 집밥
-                                </label>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="tag" value="외식"> 외식
-                                </label>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="tag" value="간편식"> 간편식
-                                </label>
+                                <fieldset class="row">
+                                    <legend>카테고리</legend>
+                                    <label class="form-check-labe col-md-3">
+                                        <input class="form-check-input" type="checkbox" name="tags" value="1"> 한식
+                                    </label>
+                                    <label class="form-check-label col-md-3">
+                                        <input class="form-check-input" type="checkbox" name="tags" value="2"> 중식
+                                    </label>
+                                    <label class="form-check-label col-md-3">
+                                        <input class="form-check-input" type="checkbox" name="tags" value="3"> 일식
+                                    </label>
+                                    <label class="form-check-label col-md-3">
+                                        <input class="form-check-input" type="checkbox" name="tags" value="4"> 양식
+                                    </label>
+                                    <label class="form-check-label col-md-3">
+                                        <input class="form-check-input" type="checkbox" name="tags" value="5"> 집밥
+                                    </label>
+                                    <label class="form-check-label col-md-3">
+                                        <input class="form-check-input" type="checkbox" name="tags" value="6"> 외식
+                                    </label>
+                                    <label class="form-check-label col-md-3">
+                                        <input class="form-check-input" type="checkbox" name="tags" value="7"> 간편식
+                                    </label>
+                                </fieldset>
                             </div>
                             <button type="submit" class="button">작성</button>
                         </form>
