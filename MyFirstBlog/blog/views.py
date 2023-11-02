@@ -33,6 +33,9 @@ class PostList(ListView):
     paginate_by = pageslice
     page_kwarg = "page"
 
+    def get(request, pk):
+        pass
+
 
 class PostSearch(ListView):
     model = Post
