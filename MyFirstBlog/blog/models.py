@@ -18,6 +18,20 @@ class Post(models.Model):
     tags = models.ManyToManyField("Tag", blank=True, verbose_name="태그")
     view_count = models.PositiveIntegerField(verbose_name="조회수", default=0)
     likes_count = models.PositiveIntegerField(verbose_name="좋아요", default=0)
+    previous_post = models.ForeignKey(
+        "self",
+        related_name="next",
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
+    next_post = models.ForeignKey(
+        "self",
+        related_name="previous",
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return self.title

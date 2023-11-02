@@ -33,9 +33,6 @@ class PostList(ListView):
     paginate_by = pageslice
     page_kwarg = "page"
 
-    def get(request, pk):
-        pass
-
 
 class PostSearch(ListView):
     model = Post
@@ -64,13 +61,20 @@ class PostDetail(DetailView):
     context_object_name = "post"
 
     def get(self, request, pk):
-        post = Post.objects.get(pk=pk)
-        post.view_count += 1
-        post.save()
-        contaxt = {
-            "post": post,
-        }
-        return render(request, "blog/post_detail.html", contaxt)
+        try:
+            post = Post.objects.get(pk=pk)
+            post.view_count += 1
+            post.save()
+            previous_post = post.previous_post
+            next_post = post.next_post
+            contaxt = {
+                "post": post,
+                "previous_post": previous_post,
+                "next_post": next_post,
+            }
+            return render(request, "blog/post_detail.html", contaxt)
+        except Post.DoesNotExist:
+            return render(request, "blog/post_404.html")
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):

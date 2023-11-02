@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block main %}
+{% load static %}
+{% if post.head_image %}
+<div class="banner" style="background-image: url({{ post.head_image.url }})">
+{% else %}
+<div class="banner">
+{% endif %}
+    <div class="max-width">
+        <div class="banner-contents">
+            <p class="today">{{ post.created_at|date:'M' }} <em>{{ post.created_at|date:'d' }}</em> {{ post.created_at|date:'D' }}</p>
+        </div>
+    </div>
+</div>
+<div class="view">
+    <div class="max-width">
+        <section class="wrap-box">
+            <div class="inner">
+                <div class="title-wrap">
+                    <h2>404 Not Found</h2>
+                </div>
+                <hr>
+                <div class="view-contents">
+                    <p>
+                        존재하지 않는 게시물입니다.
+                    </p>
+                </div>
+                <a href="{% url 'post_list' %}" class="btn-back">
+                    <span class="a11y-hidden">Back</span>
+                </a>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock main %}

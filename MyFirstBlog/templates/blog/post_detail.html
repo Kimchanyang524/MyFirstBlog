@@ -44,7 +44,12 @@
                     </p>
                 </div>
                 <div class="justify-content-center">
-                    이전글 이후글
+                    {% if previous_post %}
+                    <a href="{% url 'post_detail' previous_post.id %}">이전글</a>
+                    {% endif %}
+                    {% if next_post %}
+                    <a href="{% url 'post_detail' next_post.id %}">이후글</a>
+                    {% endif %}
                 </div>
                 {% if request.user.is_staff or request.user == post.author %}
                 <div class="btn-group">
