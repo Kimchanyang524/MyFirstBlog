@@ -43,6 +43,9 @@
                         {{ post.content }}
                     </p>
                 </div>
+                <div class="justify-content-center">
+                    이전글 이후글
+                </div>
                 {% if request.user.is_staff or request.user == post.author %}
                 <div class="btn-group">
                     <a href="{% url 'post_update' post.id %}" class="btn-modify">

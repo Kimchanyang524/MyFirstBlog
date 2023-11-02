@@ -11,7 +11,7 @@ class PostPick6(ListView):
     template_name = "main/index.html"
 
     def get_queryset(self):
-        return Post.objects.all()[:6]
+        return Post.objects.all().order_by("-pk")[:6]
 
 
 index = PostPick6.as_view()

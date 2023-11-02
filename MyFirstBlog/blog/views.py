@@ -26,17 +26,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 pageslice = 30
 
 
-def paging(queryset, page):
-    if not page:
-        page = 1
-    page = int(page)
-    try:
-        queryset = queryset[(page - 1) * pageslice : page * pageslice]
-    except:
-        queryset = queryset[(page - 1) * pageslice :]
-    return queryset
-
-
 class PostList(ListView):
     model = Post
     ordering = "-pk"
@@ -90,9 +79,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.tags.set(form.cleaned_data["tags"])
             post.author = request.user
             post.save()
+            form.save_m2m()
         return redirect("post_list")
 
 
