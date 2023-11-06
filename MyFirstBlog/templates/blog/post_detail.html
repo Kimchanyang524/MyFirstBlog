@@ -15,7 +15,7 @@
                 <!-- author -->
                 <dl class="author-wrap">
                     <dt class="a11y-hidden">작성자</dt>
-                    <dd class="author"><img src="{% static './images/profile.jpg' %}" alt="">{{ post.author }}</dd>
+                    <dd class="author"><img src="{% static './images/profile.jpg' %}" alt="">{% if post.nickname %}{{ post.nickname }}{% else %}{{ post.author }}{% endif %}</dd>
                     <dt class="a11y-hidden">작성일자</dt>
                     <dd class="created">{{ post.created_at|date:'Y년 m월 d일 D' }}</dd>
                 </dl>
@@ -65,7 +65,7 @@
                                 {% endif %}
                             </a>
                         </div>
-                        <div class="col-md-2">{{ comment.author }}</div>
+                        <div class="col-md-2" style="display: block;">{% if comment.author.nickname %}{{ comment.author.nickname }}{% else %}{{ comment.author }}{% endif %}</div>
                         <div class="col-md-7">{{ comment.message }}</div>
                         <div class="col-md-2">{{ comment.created_at|date:'Y.m.d H:i' }}</div>
                         <hr>

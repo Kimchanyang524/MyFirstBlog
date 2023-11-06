@@ -27,7 +27,9 @@ class MyRegister(CreateView):
         form = UserForm(request.POST, request.FILES)
         if form.is_valid():
             print(form.cleaned_data)
-            form.save()
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data["password"])
+            user.save()
             return redirect("post_list")
 
 

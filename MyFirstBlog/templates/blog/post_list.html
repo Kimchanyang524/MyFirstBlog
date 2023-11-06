@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{{ post.id }}</td>
                                 <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
-                                <td>{{ post.author }}</td>
+                                <td>{% if post.nickname %}{{ post.nickname }}{% else %}{{ post.author }}{% endif %}</td>
                                 <td>{{ post.created_at|date:'Y.m.d' }}</td>
                                 <td>{{ post.view_count }}</td>
                             </tr>
