@@ -47,11 +47,6 @@
                 </a>
             </h1>
             <ul>
-                <li>
-                    <a href="/admin/" class="button">
-                        <span>어드민사이트</span>
-                    </a>
-                </li>
                 {% if request.user.is_authenticated %}
                 <li class="profile-img">
                     <a href="{% url 'profile' %}">

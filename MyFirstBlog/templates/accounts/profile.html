@@ -17,17 +17,26 @@
     <div class="max-width">
         <section class="wrap-box">
             <div class="inner">
-                <div class="mb-3 mt-3">
-                    아이디: {{ request.user.username }}
-                    비밀번호: {{ request.user.username }}
-                    닉네임: {{ request.user.nickname }}
-                </div>
-                <div class="mb-3 mt-3">
-                    {% if request.user.profile_img %}
-                    <img src="{{ request.user.profile_img.url }}" alt="My Page" class="user-profile">
-                    {% else %}
-                    <img src="{% static './assets/blank_profile.png' %}" alt="My Page" class="user-profile">
-                    {% endif %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {% if request.user.profile_img %}
+                                <img src="{{ request.user.profile_img.url }}" class="user-profile">
+                                {% else %}
+                                <img src="{% static './assets/blank_profile.png' %}" class="user-profile">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-12">
+                                아이디: {{ request.user.username }}
+                            </div>
+                            <div class="col-md-12">
+                                닉네임: {{ request.user.nickname }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                    </div>
                 </div>
             </div>
         </section>

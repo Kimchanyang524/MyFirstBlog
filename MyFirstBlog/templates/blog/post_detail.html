@@ -59,9 +59,9 @@
                         <div class="col-md-1 profile-img">
                             <a href="#">
                                 {% if comment.author.profile_img %}
-                                <img src="{{ comment.author.profile_img.url }}" alt="My Page">
+                                <img src="{{ comment.author.profile_img.url }}">
                                 {% else %}
-                                <img src="{% static './assets/blank_profile.png' %}" alt="My Page">
+                                <img src="{% static './assets/blank_profile.png' %}">
                                 {% endif %}
                             </a>
                         </div>
