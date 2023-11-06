@@ -70,13 +70,9 @@
         <aside class="about">
             <h3>카테고리</h3>
             <ul class="categories">
-                <li><a href="{% url 'post_search_tag' '한식' %}">한식</a></li>
-                <li><a href="{% url 'post_search_tag' '중식' %}">중식</a></li>
-                <li><a href="{% url 'post_search_tag' '일식' %}">일식</a></li>
-                <li><a href="{% url 'post_search_tag' '양식' %}">양식</a></li>
-                <li><a href="{% url 'post_search_tag' '집밥' %}">집밥</a></li>
-                <li><a href="{% url 'post_search_tag' '외식' %}">외식</a></li>
-                <li><a href="{% url 'post_search_tag' '간편식' %}">간편식</a></li>
+                {% for tag in tags %}
+                <li><a href="{% url 'post_search_tag' tag %}">{{ tag }}</a></li>
+                {% endfor %}
             </ul>
             <h3>검색</h3>
             <form class="d-flex" action="{% url 'post_search' %}" method="get">
