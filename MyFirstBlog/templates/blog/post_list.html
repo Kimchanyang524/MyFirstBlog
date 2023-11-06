@@ -79,7 +79,7 @@
                 <li><a href="{% url 'post_search_tag' '간편식' %}">간편식</a></li>
             </ul>
             <h3>검색</h3>
-            <form class="d-flex" action="{% url "post_search" %}" method="get">
+            <form class="d-flex" action="{% url 'post_search' %}" method="get">
                 <input class="form-control me-2" type="text" placeholder="Search" name="search">
                 <button type="submit" class="button white"><img src="{% static './assets/icon-search.svg' %}" alt="My Blog"></button>
                 <input type="hidden" name="page" value="1">

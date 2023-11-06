@@ -43,26 +43,51 @@
                         {{ post.content }}
                     </p>
                 </div>
-                <div class="justify-content-center">
+                <div class="d-flex justify-content-center">
                     {% if previous_post %}
-                    <a href="{% url 'post_detail' previous_post.id %}">이전글</a>
+                    <a href="{% url 'post_detail' previous_post.id %}" class="button white">이전글</a>
                     {% endif %}
+                    &nbsp;&nbsp;
                     {% if next_post %}
-                    <a href="{% url 'post_detail' next_post.id %}">이후글</a>
+                    <a href="{% url 'post_detail' next_post.id %}" class="button white">이후글</a>
                     {% endif %}
+                </div>
+                <hr style="border: solid 2px black;">
+                <div class="title-wrap">
+                    <h2>댓글</h2>
+                </div>
+                <div class="view-contents">
+                    <div class="row">
+                        <hr>
+                        {% for comment in comments %}
+                        <div class="col-md-1 profile-img">
+                            <a href="#">
+                                {% if comment.author.profile_img %}
+                                <img src="{{ comment.author.profile_img.url }}" alt="My Page" style="margin: 0;">
+                                {% else %}
+                                <img src="{% static './assets/blank_profile.png' %}" alt="My Page" style="margin: 0;">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="col-md-2">{{ comment.author }}</div>
+                        <div class="col-md-7">{{ comment.message }}</div>
+                        <div class="col-md-2">{{ comment.created_at|date:'Y.m.d H:i' }}</div>
+                        <hr>
+                        {% endfor %}
+                    </div>
                 </div>
                 {% if request.user.is_staff or request.user == post.author %}
                 <div class="btn-group">
                     <a href="{% url 'post_update' post.id %}" class="btn-modify">
-                        <span class="a11y-hidden">modify</span>
+                        <span class="a11y-hidden">수정</span>
                     </a>
                     <button id="delete_bt" type="button" class="btn-delete">
-                        <span id="delete_sp" class="a11y-hidden">delete</span>
+                        <span id="delete_sp" class="a11y-hidden">삭제</span>
                     </button>
                 </div>
                 {% endif %}
                 <a href="{% url 'post_list' %}" class="btn-back">
-                    <span class="a11y-hidden">Back</span>
+                    <span class="a11y-hidden">뒤로가기</span>
                 </a>
             </div>
         </section>
@@ -71,6 +96,7 @@
 
 <script>
     const delete_bt = document.getElementById('delete_bt')
+    const btn_like = document.querySelector('.btn-like')
 
     delete_bt.addEventListener('click', ()=>{
         delete_confirm = confirm('정말로 삭제하시겠습니까?')

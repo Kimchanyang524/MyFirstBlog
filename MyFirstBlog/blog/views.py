@@ -91,10 +91,12 @@ class PostDetail(DetailView):
             )
         except Post.DoesNotExist:
             previous_post = None
+        comments = Comment.objects.filter(post=post)
         contaxt = {
             "post": post,
             "previous_post": previous_post,
             "next_post": next_post,
+            "comments": comments,
         }
         return render(request, "blog/post_detail.html", contaxt)
 
