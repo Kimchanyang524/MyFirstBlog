@@ -171,7 +171,9 @@ class PostUpdateView(UserPassesTestMixin, UpdateView):
             post = Post.objects.get(pk=pk)
             post.title = form.cleaned_data["title"]
             post.content = form.cleaned_data["content"]
-            post.head_image = form.cleaned_data["head_image"]
+            if form.cleaned_data["head_image"]:
+                post.head_image = form.cleaned_data["head_image"]
+            post.tags.set(form.cleaned_data["tags"])
             post.save()
         return redirect("post_list")
 

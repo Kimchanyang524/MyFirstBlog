@@ -25,6 +25,35 @@ C:.
 |   manage.py
 |   tree.txt
 |   
++---accounts
+|   |   admin.py
+|   |   apps.py
+|   |   forms.py
+|   |   models.py
+|   |   tests.py
+|   |   urls.py
+|   |   views.py
+|   |   __init__.py
+|   |   
+|   +---migrations
+|   |   |   0001_initial.py
+|   |   |   0002_user_profile_img.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           0001_initial.cpython-312.pyc
+|   |           0002_user_profile_img.cpython-312.pyc
+|   |           __init__.cpython-312.pyc
+|   |           
+|   \---__pycache__
+|           admin.cpython-312.pyc
+|           apps.cpython-312.pyc
+|           forms.cpython-312.pyc
+|           models.cpython-312.pyc
+|           urls.cpython-312.pyc
+|           views.cpython-312.pyc
+|           __init__.cpython-312.pyc
+|           
 +---blog
 |   |   admin.py
 |   |   apps.py
@@ -37,10 +66,12 @@ C:.
 |   |   
 |   +---migrations
 |   |   |   0001_initial.py
+|   |   |   0002_post_next_post_post_previous_post.py
 |   |   |   __init__.py
 |   |   |   
 |   |   \---__pycache__
 |   |           0001_initial.cpython-312.pyc
+|   |           0002_post_next_post_post_previous_post.cpython-312.pyc
 |   |           __init__.cpython-312.pyc
 |   |           
 |   \---__pycache__
@@ -77,6 +108,18 @@ C:.
 |           __init__.cpython-312.pyc
 |           
 +---media
+|   +---accounts
+|   |   \---images
+|   |       \---user_username
+|   |               profile_img.jpg
+|   |               
+|   \---blog
+|       \---images
+|           \---yyyy
+|               \---mm
+|                   \---dd
+|                           img.jpg
+|                           
 +---MyFirstblog
 |   |   asgi.py
 |   |   settings.py
@@ -87,23 +130,73 @@ C:.
 |   \---__pycache__
 |           settings.cpython-312.pyc
 |           urls.cpython-312.pyc
+|           wsgi.cpython-312.pyc
 |           __init__.cpython-312.pyc
 |           
 +---static
+|   +---assets
+|   |       ArrowLeft-blue.svg
+|   |       ArrowTop.svg
+|   |       background.jpg
+|   |       blank_profile.png
+|   |       Facebook.svg
+|   |       Github.svg
+|   |       icon-delete-white.svg
+|   |       icon-delete.svg
+|   |       icon-like-white.svg
+|   |       icon-like.svg
+|   |       icon-login.svg
+|   |       icon-logout.svg
+|   |       icon-modify-white.svg
+|   |       icon-modify.svg
+|   |       icon-postlist.svg
+|   |       icon-register.svg
+|   |       icon-search.svg
+|   |       Instagram.svg
+|   |       Logo.svg
+|   |       profile.jpg
+|   |       Twitter.svg
+|   |       
+|   +---css
+|   |       about.css
+|   |       author.css
+|   |       banner.css
+|   |       bootstrap.css
+|   |       button.css
+|   |       category.css
+|   |       footer.css
+|   |       global.css
+|   |       header.css
+|   |       main.css
+|   |       post.css
+|   |       posts.css
+|   |       reset.css
+|   |       view.css
+|   |       wrapbox.css
+|   |       
+|   +---images
+|   |       background.jpg
+|   |       profile.jpg
+|   |       project plan.png
+|   |       
+|   \---js
 \---templates
     |   base.html
     |   
+    +---accounts
+    |       login.html
+    |       profile.html
+    |       register.html
+    |       
     +---blog
-    |       base.html
-    |       postdetail.html
-    |       postform.html
-    |       postlist.html
+    |       post_404.html
+    |       post_confirm_delete.html
+    |       post_detail.html
+    |       post_form.html
+    |       post_list.html
     |       
     \---main
-            base.html
             index.html
-            login.html
-            signup.html
 ```
 ### 3.1 개발 일정(WBS)
 * 일정표는 https://www.notion.so/ 에서 작성되었습니다.
