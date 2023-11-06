@@ -56,16 +56,16 @@
                 <div class="title-wrap">
                     <h2>댓글</h2>
                 </div>
-                <div class="view-contents">
+                <div class="view-comment">
                     <div class="row">
                         <hr>
                         {% for comment in comments %}
                         <div class="col-md-1 profile-img">
                             <a href="#">
                                 {% if comment.author.profile_img %}
-                                <img src="{{ comment.author.profile_img.url }}" alt="My Page" style="margin: 0;">
+                                <img src="{{ comment.author.profile_img.url }}" alt="My Page">
                                 {% else %}
-                                <img src="{% static './assets/blank_profile.png' %}" alt="My Page" style="margin: 0;">
+                                <img src="{% static './assets/blank_profile.png' %}" alt="My Page">
                                 {% endif %}
                             </a>
                         </div>
@@ -74,6 +74,23 @@
                         <div class="col-md-2">{{ comment.created_at|date:'Y.m.d H:i' }}</div>
                         <hr>
                         {% endfor %}
+                        {% if request.user.is_authenticated %}
+                        <form action="" method="post" class="row">
+                            {% csrf_token %}
+                            <div class="col-md-1 profile-img">
+                                <a href="#">
+                                    {% if request.user.profile_img %}
+                                    <img src="{{ request.user.profile_img.url }}" alt="My Page">
+                                    {% else %}
+                                    <img src="{% static './assets/blank_profile.png' %}" alt="My Page">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="col-md-2">{{ request.user }}</div>
+                            <div class="col-md-7"><textarea class="form-control comment" name="message"></textarea></div>
+                            <div class="col-md-2"><button type="submit" class="button">작성</button></div>
+                        </form>
+                        {% endif %}
                     </div>
                 </div>
                 {% if request.user.is_staff or request.user == post.author %}
