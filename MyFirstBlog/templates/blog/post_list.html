@@ -42,10 +42,26 @@
                     </table>
                     <div class="d-flex justify-content-center">
                         {% if page_obj.has_previous %}
-                        <a href="{% url "post_list" %}?page={{ page_obj.previous_page_number }}">이전</a>
+                        <form action="" method="get">
+                            <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}">
+                            <button type="submit" class="button white">이전</button>
+                            {% for key, value in request.GET.items %}
+                                {% if key == 'search' %}
+                                    <input type="hidden" name="{{ key }}" value="{{ value }}">
+                                {% endif %}
+                            {% endfor %}
+                        </form>
                         {% endif %}
                         {% if page_obj.has_next %}
-                        <a href="{% url "post_list" %}?page={{ page_obj.next_page_number }}">다음</a>
+                        <form action="" method="get">
+                            <input type="hidden" name="page" value="{{ page_obj.next_page_number }}">
+                            <button type="submit" class="button white">다음</button>
+                            {% for key, value in request.GET.items %}
+                                {% if key == 'search' %}
+                                    <input type="hidden" name="{{ key }}" value="{{ value }}">
+                                {% endif %}
+                            {% endfor %}
+                        </form>
                         {% endif %}
                     </div>
                 </div>
@@ -63,10 +79,10 @@
                 <li><a href="{% url 'post_search_tag' '간편식' %}">간편식</a></li>
             </ul>
             <h3>검색</h3>
-            <form class="d-flex" action="" method="get">
-                <input class="form-control me-2" type="text" placeholder="Search">
-                <img src="{% static './assets/icon-search.svg' %}" alt="My Blog" class="btn"
-                    style="width: 40px;height: 40px;">
+            <form class="d-flex" action="{% url "post_search" %}" method="get">
+                <input class="form-control me-2" type="text" placeholder="Search" name="search">
+                <button type="submit" class="button white"><img src="{% static './assets/icon-search.svg' %}" alt="My Blog"></button>
+                <input type="hidden" name="page" value="1">
             </form>
         </aside>
     </div>

@@ -23,7 +23,7 @@ from django.views.generic import (
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-pageslice = 3
+pageslice = 30
 
 
 class PostList(ListView):
@@ -31,7 +31,6 @@ class PostList(ListView):
     ordering = "-pk"
     context_object_name = "posts"
     paginate_by = pageslice
-    page_kwarg = "page"
 
 
 class PostSearch(ListView):
@@ -39,7 +38,15 @@ class PostSearch(ListView):
     ordering = "-pk"
     context_object_name = "posts"
     paginate_by = pageslice
-    page_kwarg = "page"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.GET.get("search")
+        if search:
+            queryset = queryset.filter(
+                Q(title__icontains=search) | Q(content__icontains=search)
+            )
+        return queryset
 
 
 class PostSearchTag(ListView):
@@ -47,7 +54,6 @@ class PostSearchTag(ListView):
     ordering = "-pk"
     context_object_name = "posts"
     paginate_by = pageslice
-    page_kwarg = "page"
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -63,18 +69,34 @@ class PostDetail(DetailView):
     def get(self, request, pk):
         try:
             post = Post.objects.get(pk=pk)
-            post.view_count += 1
-            post.save()
-            previous_post = post.previous_post
-            next_post = post.next_post
-            contaxt = {
-                "post": post,
-                "previous_post": previous_post,
-                "next_post": next_post,
-            }
-            return render(request, "blog/post_detail.html", contaxt)
         except Post.DoesNotExist:
             return render(request, "blog/post_404.html")
+        post.view_count += 1
+        post.save()
+        current_post = post
+        try:
+            next_post = (
+                Post.objects.filter(created_at__gt=current_post.created_at)
+                .order_by("created_at")
+                .first()
+            )
+        except Post.DoesNotExist:
+            next_post = None
+
+        try:
+            previous_post = (
+                Post.objects.filter(created_at__lt=current_post.created_at)
+                .order_by("-created_at")
+                .first()
+            )
+        except Post.DoesNotExist:
+            previous_post = None
+        contaxt = {
+            "post": post,
+            "previous_post": previous_post,
+            "next_post": next_post,
+        }
+        return render(request, "blog/post_detail.html", contaxt)
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):

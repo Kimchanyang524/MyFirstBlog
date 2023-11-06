@@ -62,12 +62,14 @@
                         {% endif %}
                     </a>
                 </li>
+                {% endif %}
                 <li>
-                    <a href="{% url 'post_list' %}" class="button white">
+                    <a href="{% url 'post_list' %}?page=1" class="button white">
                         <img src="{% static './assets/icon-postlist.svg' %}" alt="">
                         <span>글목록</span>
                     </a>
                 </li>
+                {% if request.user.is_authenticated %}
                 <li>
                     <a href="{% url 'post_create' %}" class="button">
                         <img src="{% static './assets/icon-modify-white.svg' %}" alt="">
@@ -81,12 +83,6 @@
                     </button>
                 </li>
                 {% else %}
-                <li>
-                    <a href="{% url 'post_list' %}" class="button white">
-                        <img src="{% static './assets/icon-postlist.svg' %}" alt="">
-                        <span>글목록</span>
-                    </a>
-                </li>
                 <li>
                     <a href="{% url 'register' %}" class="button">
                         <img src="{% static './assets/icon-register.svg' %}" alt="">
