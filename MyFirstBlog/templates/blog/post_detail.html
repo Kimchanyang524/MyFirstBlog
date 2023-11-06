@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
 {% load static %}
-{% if post.head_image %}
-<div class="banner" style="background-image: url({{ post.head_image.url }})">
-{% else %}
-<div class="banner">
-{% endif %}
+<div class="banner" {% if post.head_image %} style="background-image: url({{ post.head_image.url }})" {% endif %}>
     <div class="max-width">
         <div class="banner-contents">
             <p class="today">{{ post.created_at|date:'M' }} <em>{{ post.created_at|date:'d' }}</em> {{ post.created_at|date:'D' }}</p>
@@ -110,7 +106,7 @@
         </section>
     </div>
 </div>
-
+{% endblock main %}
 <script>
     const delete_bt = document.getElementById('delete_bt')
     const btn_like = document.querySelector('.btn-like')
@@ -122,4 +118,3 @@
         }
     })
 </script>
-{% endblock main %}

@@ -1,3 +1,11 @@
+<style>
+    .user-profile {
+        width: 8rem;
+        height: 8rem;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+</style>
 {% extends "base.html" %}
 {% block main %}
 {% load static %}
@@ -9,18 +17,17 @@
     <div class="max-width">
         <section class="wrap-box">
             <div class="inner">
-                <div class="view-contents">
-                    <div class="mb-3 mt-3">
-                        아이디: {{ request.user.username }}
-                        비밀번호: {{ request.user.username }}
-                    </div>
-                    <div class="mb-3 mt-3">
-                        {% if request.user.profile_img %}
-                        <img src="{{ request.user.profile_img.url }}" alt="My Page">
-                        {% else %}
-                        <img src="{% static './assets/blank_profile.jpg' %}" alt="My Page">
-                        {% endif %}
-                    </div>
+                <div class="mb-3 mt-3">
+                    아이디: {{ request.user.username }}
+                    비밀번호: {{ request.user.username }}
+                    닉네임: {{ request.user.nickname }}
+                </div>
+                <div class="mb-3 mt-3">
+                    {% if request.user.profile_img %}
+                    <img src="{{ request.user.profile_img.url }}" alt="My Page" class="user-profile">
+                    {% else %}
+                    <img src="{% static './assets/blank_profile.png' %}" alt="My Page" class="user-profile">
+                    {% endif %}
                 </div>
             </div>
         </section>

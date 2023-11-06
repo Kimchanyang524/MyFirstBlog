@@ -54,7 +54,7 @@
                 </li>
                 {% if request.user.is_authenticated %}
                 <li class="profile-img">
-                    <a href="#">
+                    <a href="{% url 'profile' %}">
                         {% if request.user.profile_img %}
                         <img src="{{ request.user.profile_img.url }}" alt="My Page">
                         {% else %}

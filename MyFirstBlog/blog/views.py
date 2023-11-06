@@ -9,7 +9,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 
 # custom .py
-from .models import Post, Comment
+from .models import Post, Comment, Tag
 from .forms import PostForm, CommentForm
 
 # django views
@@ -53,6 +53,11 @@ class PostSearch(ListView):
             )
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tags"] = Tag.objects.all()
+        return context
+
 
 class PostSearchTag(ListView):
     model = Post
@@ -65,6 +70,11 @@ class PostSearchTag(ListView):
         tag = self.kwargs["tag"]
         queryset = queryset.filter(tags__name=tag)
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tags"] = Tag.objects.all()
+        return context
 
 
 class PostDetail(DetailView):
@@ -146,6 +156,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = "blog/post_form.html"
+    context_object_name = "post"
 
     def post(self, request):
         form = PostForm(request.POST, request.FILES)

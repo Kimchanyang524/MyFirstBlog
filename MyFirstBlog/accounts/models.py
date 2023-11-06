@@ -5,7 +5,8 @@ from django.contrib.auth.models import AbstractUser
 
 def user_directory_path(instance, filename):
     """
-    instance는 모델 인스턴스 (예: User)\n
+    instance는 모델 인스턴스 (예: User)
+
     filename은 업로드된 파일의 이름
     """
     return f"accounts/images/user_{instance.username}/{filename}"
