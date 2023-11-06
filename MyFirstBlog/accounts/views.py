@@ -34,6 +34,9 @@ class MyRegister(CreateView):
 
 
 class MyLoginView(LoginView):
+    template_name = "accounts/login.html"
+    success_url = "post_list"
+
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             html = """
@@ -46,8 +49,14 @@ class MyLoginView(LoginView):
         else:
             return super().dispatch(request, *args, **kwargs)
 
-    template_name = "accounts/login.html"
-    success_url = "post_list"
+    def form_invalid(self, form):
+        html = """
+            <script>
+                alert('로그인에 실패했습니다. 회원가입해주세요.');
+                window.location.href = "/accounts/register";
+            </script>
+        """
+        return HttpResponse(html)
 
 
 class MyLogoutView(LoginRequiredMixin, LogoutView):

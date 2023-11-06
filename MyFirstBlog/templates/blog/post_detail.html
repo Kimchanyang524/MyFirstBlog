@@ -15,7 +15,18 @@
                 <!-- author -->
                 <dl class="author-wrap">
                     <dt class="a11y-hidden">작성자</dt>
-                    <dd class="author"><img src="{% static './images/profile.jpg' %}" alt="">{% if post.nickname %}{{ post.nickname }}{% else %}{{ post.author }}{% endif %}</dd>
+                    <dd class="author">
+                        {% if post.author.profile_img %}
+                        <img src="{{ post.author.profile_img.url }}" alt="">
+                        {% else %}
+                        <img src="{% static './assets/blank_profile.png' %}" alt="">
+                        {% endif %}
+                        {% if post.nickname %}
+                        {{ post.nickname }}
+                        {% else %}
+                        {{ post.author }}
+                        {% endif %}
+                    </dd>
                     <dt class="a11y-hidden">작성일자</dt>
                     <dd class="created">{{ post.created_at|date:'Y년 m월 d일 D' }}</dd>
                 </dl>
@@ -116,7 +127,6 @@
         </section>
     </div>
 </div>
-{% endblock main %}
 <script>
     const delete_bt = document.getElementById('delete_bt')
     const btn_like = document.querySelector('.btn-like')
@@ -128,3 +138,4 @@
         }
     })
 </script>
+{% endblock main %}
