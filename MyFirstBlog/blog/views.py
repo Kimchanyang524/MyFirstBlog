@@ -23,7 +23,7 @@ from django.views.generic import (
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-pageslice = 30
+pageslice = 3
 
 
 class PostList(ListView):
