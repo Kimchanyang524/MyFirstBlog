@@ -66,8 +66,18 @@
                             </a>
                         </div>
                         <div class="col-md-2" style="display: block;">{% if comment.author.nickname %}{{ comment.author.nickname }}{% else %}{{ comment.author }}{% endif %}</div>
-                        <div class="col-md-7">{{ comment.message }}</div>
+                        <div class="col-md-6">{{ comment.message }}</div>
                         <div class="col-md-2">{{ comment.created_at|date:'Y.m.d H:i' }}</div>
+                        <div class="col-md-1">
+                            {% if request.user.is_staff or request.user == comment.author %}
+                            <button href="{% url 'post_update' post.id %}" class="btn-modify" style="margin-bottom: 5px;">
+                                <span class="a11y-hidden">수정</span>
+                            </button>
+                            <button id="delete_bt" type="button" class="btn-delete">
+                                <span id="delete_sp" class="a11y-hidden">삭제</span>
+                            </button>
+                            {% endif %}
+                        </div>
                         <hr>
                         {% endfor %}
                         {% if request.user.is_authenticated %}
@@ -82,7 +92,7 @@
                                     {% endif %}
                                 </a>
                             </div>
-                            <div class="col-md-2">{{ request.user }}</div>
+                            <div class="col-md-2">{% if request.user.nickname %}{{ request.user.nickname }}{% else %}{{ request.user }}{% endif %}</div>
                             <div class="col-md-7"><textarea class="form-control comment" name="message"></textarea></div>
                             <div class="col-md-2"><button type="submit" class="button">작성</button></div>
                         </form>

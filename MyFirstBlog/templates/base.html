@@ -103,6 +103,7 @@
         </div>
     </footer>
 </body>
+{% if request.user.is_authenticated %}
 <script>
     const logout = document.querySelector('.logout')
 
@@ -113,5 +114,5 @@
         }
     })
 </script>
-
+{% endif %}
 </html>

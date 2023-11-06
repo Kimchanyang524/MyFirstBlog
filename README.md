@@ -10,18 +10,12 @@
 ### 1.2 기능
 - 여러가지 자유롭게 글을 쓸 수 있는 게시판
 - 음식 레시피를 유저들이 적으면 태그나 검색 기능을 통해 찾아서 볼 수 있는것
-- 
-- 
-- 
+- 로그인 시 댓글이 작성 가능하다.
 
 ## 2. 개발 환경 및 배포 URL
 ### 2.1 개발 환경
 - Web Framework
   - Django 4.2.6 (Python 3.12.0)
-- 서비스 배포 환경
-  - GitHub
-### 2.2 배포 URL
-- https://www.studyin.co.kr/
 
 ## 3. 프로젝트 구조와 개발 일정
 ### 3.1 프로젝트 구조
@@ -114,7 +108,7 @@ C:.
 ### 3.1 개발 일정(WBS)
 * 일정표는 https://www.notion.so/ 에서 작성되었습니다.
 * 관련된 스택 표시는 https://github.com/ 에서 작성되었습니다.
-![image](https://github.com/Kimchanyang524/MyFirstBlog/assets/105031421/1ed2dc19-7675-40ae-9a3b-f61a388908bc)
+<img src="MyFirstBlog\static\images\project plan.png" width="40%">
 
 ## 4. 개발자
 
