@@ -31,205 +31,229 @@
 ## 3. 프로젝트 구조와 개발 일정
 ### 3.1 프로젝트 구조
 ```bash
-C:.
-|   db.sqlite3
-|   manage.py
-|   tree.txt
-|   
-+---accounts
-|   |   admin.py
-|   |   apps.py
-|   |   forms.py
-|   |   models.py
-|   |   tests.py
-|   |   urls.py
-|   |   views.py
-|   |   __init__.py
-|   |   
-|   +---migrations
-|   |   |   0001_initial.py
-|   |   |   0002_user_profile_img.py
-|   |   |   __init__.py
-|   |   |   
-|   |   \---__pycache__
-|   |           0001_initial.cpython-312.pyc
-|   |           0002_user_profile_img.cpython-312.pyc
-|   |           __init__.cpython-312.pyc
-|   |           
-|   \---__pycache__
-|           admin.cpython-312.pyc
-|           apps.cpython-312.pyc
-|           forms.cpython-312.pyc
-|           models.cpython-312.pyc
-|           urls.cpython-312.pyc
-|           views.cpython-312.pyc
-|           __init__.cpython-312.pyc
-|           
-+---blog
-|   |   admin.py
-|   |   apps.py
-|   |   forms.py
-|   |   models.py
-|   |   tests.py
-|   |   urls.py
-|   |   views.py
-|   |   __init__.py
-|   |   
-|   +---migrations
-|   |   |   0001_initial.py
-|   |   |   0002_post_next_post_post_previous_post.py
-|   |   |   __init__.py
-|   |   |   
-|   |   \---__pycache__
-|   |           0001_initial.cpython-312.pyc
-|   |           0002_post_next_post_post_previous_post.cpython-312.pyc
-|   |           __init__.cpython-312.pyc
-|   |           
-|   \---__pycache__
-|           admin.cpython-312.pyc
-|           apps.cpython-312.pyc
-|           forms.cpython-312.pyc
-|           models.cpython-312.pyc
-|           urls.cpython-312.pyc
-|           views.cpython-312.pyc
-|           __init__.cpython-312.pyc
-|           
-+---main
-|   |   admin.py
-|   |   apps.py
-|   |   forms.py
-|   |   models.py
-|   |   tests.py
-|   |   urls.py
-|   |   views.py
-|   |   __init__.py
-|   |   
-|   +---migrations
-|   |   |   __init__.py
-|   |   |   
-|   |   \---__pycache__
-|   |           __init__.cpython-312.pyc
-|   |           
-|   \---__pycache__
-|           admin.cpython-312.pyc
-|           apps.cpython-312.pyc
-|           models.cpython-312.pyc
-|           urls.cpython-312.pyc
-|           views.cpython-312.pyc
-|           __init__.cpython-312.pyc
-|           
-+---media
-|   +---accounts
-|   |   \---images
-|   |       \---user_username
-|   |               profile_img.jpg
-|   |               
-|   \---blog
-|       \---images
-|           \---yyyy
-|               \---mm
-|                   \---dd
-|                           img.jpg
-|                           
-+---MyFirstblog
-|   |   asgi.py
-|   |   settings.py
-|   |   urls.py
-|   |   wsgi.py
-|   |   __init__.py
-|   |   
-|   \---__pycache__
-|           settings.cpython-312.pyc
-|           urls.cpython-312.pyc
-|           wsgi.cpython-312.pyc
-|           __init__.cpython-312.pyc
-|           
-+---static
-|   +---assets
-|   |       ArrowLeft-blue.svg
-|   |       ArrowTop.svg
-|   |       background.jpg
-|   |       blank_profile.png
-|   |       Facebook.svg
-|   |       Github.svg
-|   |       icon-delete-white.svg
-|   |       icon-delete.svg
-|   |       icon-like-white.svg
-|   |       icon-like.svg
-|   |       icon-login.svg
-|   |       icon-logout.svg
-|   |       icon-modify-white.svg
-|   |       icon-modify.svg
-|   |       icon-postlist.svg
-|   |       icon-register.svg
-|   |       icon-search.svg
-|   |       Instagram.svg
-|   |       Logo.svg
-|   |       profile.jpg
-|   |       Twitter.svg
-|   |       
-|   +---css
-|   |       about.css
-|   |       author.css
-|   |       banner.css
-|   |       bootstrap.css
-|   |       button.css
-|   |       category.css
-|   |       footer.css
-|   |       global.css
-|   |       header.css
-|   |       main.css
-|   |       post.css
-|   |       posts.css
-|   |       reset.css
-|   |       view.css
-|   |       wrapbox.css
-|   |       
-|   +---images
-|   |       background.jpg
-|   |       profile.jpg
-|   |       project plan.png
-|   |       
-|   \---js
-\---templates
-    |   base.html
-    |   
-    +---accounts
-    |       login.html
-    |       profile.html
-    |       register.html
-    |       
-    +---blog
-    |       post_404.html
-    |       post_confirm_delete.html
-    |       post_detail.html
-    |       post_form.html
-    |       post_list.html
-    |       
-    \---main
-            index.html
+📦MyFirstBlog
+ ┣ 📂accounts
+ ┃ ┣ 📂migrations
+ ┃ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┃ ┣ 📜0001_initial.cpython-312.pyc
+ ┃ ┃ ┃ ┣ 📜0002_user_profile_img.cpython-312.pyc
+ ┃ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
+ ┃ ┃ ┣ 📜0001_initial.py
+ ┃ ┃ ┣ 📜0002_user_profile_img.py
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┣ 📜admin.cpython-312.pyc
+ ┃ ┃ ┣ 📜apps.cpython-312.pyc
+ ┃ ┃ ┣ 📜forms.cpython-312.pyc
+ ┃ ┃ ┣ 📜models.cpython-312.pyc
+ ┃ ┃ ┣ 📜urls.cpython-312.pyc
+ ┃ ┃ ┣ 📜views.cpython-312.pyc
+ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
+ ┃ ┣ 📜admin.py
+ ┃ ┣ 📜apps.py
+ ┃ ┣ 📜forms.py
+ ┃ ┣ 📜models.py
+ ┃ ┣ 📜tests.py
+ ┃ ┣ 📜urls.py
+ ┃ ┣ 📜views.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📂blog
+ ┃ ┣ 📂migrations
+ ┃ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┃ ┣ 📜0001_initial.cpython-312.pyc
+ ┃ ┃ ┃ ┣ 📜0002_post_next_post_post_previous_post.cpython-312.pyc
+ ┃ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
+ ┃ ┃ ┣ 📜0001_initial.py
+ ┃ ┃ ┣ 📜0002_post_next_post_post_previous_post.py
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┣ 📜admin.cpython-312.pyc
+ ┃ ┃ ┣ 📜apps.cpython-312.pyc
+ ┃ ┃ ┣ 📜forms.cpython-312.pyc
+ ┃ ┃ ┣ 📜models.cpython-312.pyc
+ ┃ ┃ ┣ 📜urls.cpython-312.pyc
+ ┃ ┃ ┣ 📜views.cpython-312.pyc
+ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
+ ┃ ┣ 📜admin.py
+ ┃ ┣ 📜apps.py
+ ┃ ┣ 📜forms.py
+ ┃ ┣ 📜models.py
+ ┃ ┣ 📜tests.py
+ ┃ ┣ 📜urls.py
+ ┃ ┣ 📜views.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📂main
+ ┃ ┣ 📂migrations
+ ┃ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┣ 📜admin.cpython-312.pyc
+ ┃ ┃ ┣ 📜apps.cpython-312.pyc
+ ┃ ┃ ┣ 📜models.cpython-312.pyc
+ ┃ ┃ ┣ 📜urls.cpython-312.pyc
+ ┃ ┃ ┣ 📜views.cpython-312.pyc
+ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
+ ┃ ┣ 📜admin.py
+ ┃ ┣ 📜apps.py
+ ┃ ┣ 📜forms.py
+ ┃ ┣ 📜models.py
+ ┃ ┣ 📜tests.py
+ ┃ ┣ 📜urls.py
+ ┃ ┣ 📜views.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📂media
+ ┃ ┣ 📂accounts
+ ┃ ┃ ┗ 📂images
+ ┃ ┃ ┃ ┣ 📂user_korean
+ ┃ ┃ ┃ ┃ ┗ 📜spaghetti-1604836_1280.jpg
+ ┃ ┃ ┃ ┣ 📂user_leehojun
+ ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
+ ┃ ┃ ┃ ┣ 📂user_licat
+ ┃ ┃ ┃ ┃ ┗ 📜ramen-1216048_1280.jpg
+ ┃ ┃ ┃ ┣ 📂user_mura
+ ┃ ┃ ┃ ┃ ┗ 📜gimbap.jpg
+ ┃ ┃ ┃ ┣ 📂user_None
+ ┃ ┃ ┃ ┃ ┣ 📜bibimbap.jpg
+ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_sK75POS.jpg
+ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_wi4tNIa.jpg
+ ┃ ┃ ┃ ┃ ┗ 📜bibimbap_WMvjTeg.jpg
+ ┃ ┃ ┃ ┣ 📂user_pipiman
+ ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
+ ┃ ┃ ┃ ┗ 📂user_qwerty
+ ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
+ ┃ ┗ 📂blog
+ ┃ ┃ ┗ 📂images
+ ┃ ┃ ┃ ┗ 📂2023
+ ┃ ┃ ┃ ┃ ┣ 📂10
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂26
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂30
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜3기-줌-배경-이미지_1.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜3기-줌-배경-이미지_1_DViZ8a6.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_N36eYYo.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜코딩_기초_트레이닝_캘린더.png
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜코딩_기초_트레이닝_캘린더_z7VKDuJ.png
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂31
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜KakaoTalk_20221201_174736007.jpg
+ ┃ ┃ ┃ ┃ ┗ 📂11
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂02
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂06
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_eaxWN4k.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_EiipI8W.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_Gqqt7MR.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜gimbap.jpg
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂07
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_HiE1dIX.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜gimbap.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜gimbap_8zYB8yS.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ramen-1216048_1280.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ramen-1216048_1280_9dky5OR.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ramen-1216048_1280_CuyoNNx.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜salad-5904093_1280.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜spaghetti-1604836_1280.jpg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜잡채.jpg
+ ┣ 📂MyFirstblog
+ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┣ 📜settings.cpython-312.pyc
+ ┃ ┃ ┣ 📜urls.cpython-312.pyc
+ ┃ ┃ ┣ 📜wsgi.cpython-312.pyc
+ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
+ ┃ ┣ 📜asgi.py
+ ┃ ┣ 📜settings.py
+ ┃ ┣ 📜urls.py
+ ┃ ┣ 📜wsgi.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📂static
+ ┃ ┣ 📂assets
+ ┃ ┃ ┣ 📜ArrowLeft-blue.svg
+ ┃ ┃ ┣ 📜ArrowTop.svg
+ ┃ ┃ ┣ 📜background.jpg
+ ┃ ┃ ┣ 📜blank_profile.png
+ ┃ ┃ ┣ 📜Facebook.svg
+ ┃ ┃ ┣ 📜Github.svg
+ ┃ ┃ ┣ 📜icon-delete-white.svg
+ ┃ ┃ ┣ 📜icon-delete.svg
+ ┃ ┃ ┣ 📜icon-like-white.svg
+ ┃ ┃ ┣ 📜icon-like.svg
+ ┃ ┃ ┣ 📜icon-login.svg
+ ┃ ┃ ┣ 📜icon-logout.svg
+ ┃ ┃ ┣ 📜icon-modify-white.svg
+ ┃ ┃ ┣ 📜icon-modify.svg
+ ┃ ┃ ┣ 📜icon-postlist.svg
+ ┃ ┃ ┣ 📜icon-register.svg
+ ┃ ┃ ┣ 📜icon-search.svg
+ ┃ ┃ ┣ 📜Instagram.svg
+ ┃ ┃ ┣ 📜Logo.svg
+ ┃ ┃ ┣ 📜profile.jpg
+ ┃ ┃ ┗ 📜Twitter.svg
+ ┃ ┣ 📂css
+ ┃ ┃ ┣ 📜about.css
+ ┃ ┃ ┣ 📜author.css
+ ┃ ┃ ┣ 📜banner.css
+ ┃ ┃ ┣ 📜bootstrap.css
+ ┃ ┃ ┣ 📜button.css
+ ┃ ┃ ┣ 📜category.css
+ ┃ ┃ ┣ 📜footer.css
+ ┃ ┃ ┣ 📜global.css
+ ┃ ┃ ┣ 📜header.css
+ ┃ ┃ ┣ 📜main.css
+ ┃ ┃ ┣ 📜post.css
+ ┃ ┃ ┣ 📜posts.css
+ ┃ ┃ ┣ 📜reset.css
+ ┃ ┃ ┣ 📜view.css
+ ┃ ┃ ┗ 📜wrapbox.css
+ ┃ ┣ 📂images
+ ┃ ┃ ┣ 📜background.jpg
+ ┃ ┃ ┣ 📜ERD.png
+ ┃ ┃ ┣ 📜profile.jpg
+ ┃ ┃ ┣ 📜project_plan.png
+ ┃ ┃ ┣ 📜검색, 태그검색.gif
+ ┃ ┃ ┣ 📜글 수정 및 삭제.gif
+ ┃ ┃ ┗ 📜글 작성.gif
+ ┃ ┗ 📂js
+ ┣ 📂templates
+ ┃ ┣ 📂accounts
+ ┃ ┃ ┣ 📜login.html
+ ┃ ┃ ┣ 📜profile.html
+ ┃ ┃ ┗ 📜register.html
+ ┃ ┣ 📂blog
+ ┃ ┃ ┣ 📜post_404.html
+ ┃ ┃ ┣ 📜post_confirm_delete.html
+ ┃ ┃ ┣ 📜post_detail.html
+ ┃ ┃ ┣ 📜post_form.html
+ ┃ ┃ ┗ 📜post_list.html
+ ┃ ┣ 📂main
+ ┃ ┃ ┗ 📜index.html
+ ┃ ┗ 📜base.html
+ ┣ 📜db.sqlite3
+ ┗ 📜manage.py
 ```
 ### 3.2 URL 구조
-|app: main |views 함수 이름|html 파일이름|
-|:--------|:------------|:---------|
-|'/'       |index         |index.html |
+|app: main      |views 함수 이름    |html 파일이름   |
+|:--------------|:------------------|:--------------|
+|'/'            |index              |index.html     |
 
 |app: accounts |views 함수 이름|html 파일이름   |
 |:------------|:------------|:------------|
-|'login/'      |login         |login.html    |
-|'logout/'     |logout        |
-|'register/'     |register        |register.html   |
-|'profile/'    |profile       |profile.html  |
+|'login/'       |login          |login.html     |
+|'logout/'      |logout         |
+|'register/'    |register       |register.html  |
+|'profile/'     |profile        |profile.html   |
 
 |app: blog  |views 함수 이름  |html 파일이름   |
 |:-------------|:--------------|:------------|
-|'/'|PostList.as_view()|post_list.html|
-|'\<int:pk\>/'|PostDetail.as_view()|post_detail.html|
-|'search/'|PostSearch.as_view()|post_list.html|
-|'search/\<str:tag\>/'|PostSearchTag.as_view()|post_list.html|
-|'write/'|PostCreateView.as_view()|post_form.html|
-|'edit/\<int:pk\>/'|PostUpdateView.as_view()|post_form.html|
-|'delete/\<int:pk\>/'|PostDeleteView.as_view()|post_confirm_delete.html|
+|'/'                    |PostList.as_view()         |post_list.html             |
+|'\<int:pk\>/'          |PostDetail.as_view()       |post_detail.html           |
+|'search/'              |PostSearch.as_view()       |post_list.html             |
+|'search/\<str:tag\>/'  |PostSearchTag.as_view()    |post_list.html             |
+|'write/'               |PostCreateView.as_view()   |post_form.html             |
+|'edit/\<int:pk\>/'     |PostUpdateView.as_view()   |post_form.html             |
+|'delete/\<int:pk\>/'   |PostDeleteView.as_view()   |post_confirm_delete.html   |
 
 ### 3.3 개발 일정(WBS)
 * 일정표는 https://www.notion.so/ 에서 작성되었습니다.
