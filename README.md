@@ -187,6 +187,8 @@
  ┗ 📜manage.py
 ```
 ### 3.2 URL 구조
+
+
 |app : main             |views 함수 이름            |html 파일이름             |
 |:----------------------|:--------------------------|:--------------------------|
 |'/'                    |index                      |index.html                 |
@@ -198,7 +200,7 @@
 |'register/'            |register                   |register.html              |
 |'profile/'             |profile                    |profile.html               |
 
-|app : blog             |views 클래스 이름          |html 파일이름             |
+|app : blog             |views 클래스 이름          |html 파일이름                |
 |:----------------------|:--------------------------|:--------------------------|
 |'/'                    |PostList.as_view()         |post_list.html             |
 |'\<int:pk\>/'          |PostDetail.as_view()       |post_detail.html           |
@@ -208,44 +210,69 @@
 |'edit/\<int:pk\>/'     |PostUpdateView.as_view()   |post_form.html             |
 |'delete/\<int:pk\>/'   |PostDeleteView.as_view()   |post_confirm_delete.html   |
 
+
+
 ### 3.3 개발 일정(WBS)
 * 일정표는 https://www.notion.so/ 에서 작성되었습니다.
 * 관련된 스택 표시는 https://github.com/ 에서 작성되었습니다.
+
 <img src="MyFirstBlog\static\images\project_plan.png" width="40%">
+
+<img src="MyFirstBlog\static\images\stack.png" width="40%">
 
 ## 4. 개발자
 
 - 총괄 및 개발 : 김찬양
 
-## 5. UI
+## 5. UI 및 메인 기능
+
+### 5.1 main
+
+- 메인 화면입니다. 가장 최신의 글 6개가 올라오게됩니다. 각 글을 클릭하면 글의 페이지로 이동하게됩니다.
+
+<img src="MyFirstBlog\static\images\main_logout.png" width="40%">
+
+### 5.2 accounts
+
+- 로그인을 하게 되면 상단 네비바가 변경되며, 글 작성과 로그아웃, 프로필 기능이 활성화됩니다.
+
+<img src="MyFirstBlog\static\images\main_login.png" width="40%">
+
+- 만약 url 등을 이용해 강제로 페이지에 들어갈경우, 다른 페이지로 튕겨져 나옵니다.
+
+<img src="MyFirstBlog\static\images\logout_test.gif" width="40%">
+<img src="MyFirstBlog\static\images\login_test.gif" width="40%">
+
+- 회원가입하는 기능입니다. 로그인이 되어있으면 작동하지 않습니다.
+
+<img src="MyFirstBlog\static\images\signup.gif" width="40%">
+
+- 로그인하는 기능입니다.
+
+<img src="MyFirstBlog\static\images\login.gif" width="40%">
+
+### 5.3 blog
+
+- 글 목록입니다. 기본적인 페이징 기능이 있습니다.
+
+<img src="MyFirstBlog\static\images\list.png" width="40%">
+
+- 특정 키워드를 이용해 검색하거나, 카테고리 명을 클릭하면 해당 카테고리를 가진 글 목록으로 이동합니다.
+
+<img src="MyFirstBlog\static\images\검색, 태그검색.gif" width="40%">
 
 - 글을 작성하는 기능입니다. 카테고리는 체크박스로 적용됩니다.
+
 <img src="MyFirstBlog\static\images\글 작성.gif" width="40%">
 
 - 글을 수정하거나 삭제 시 작성자만 가능하게 하였습니다.
+
 <img src="MyFirstBlog\static\images\글 수정 및 삭제.gif" width="40%">
 
-- 특정 키워드를 이용해 검색하거나, 카테고리 명을 클릭하면 해당 카테고리를 가진 글 목록으로 이동합니다.
-<img src="MyFirstBlog\static\images\검색, 태그검색.gif" width="40%">
+- 혹시 의견이 달고싶으면 댓글 작성 또한 가능합니다.
 
-## 6. 데이터베이스 모델링(ERD)
+<img src="MyFirstBlog\static\images\comment.png" width="40%">
 
-<img src="MyFirstBlog\static\images\ERD.png" width="40%">
-
-## 7. 메인 기능
-- 메인 탭
-    - 메인화면에 최신게시물 6개와 블로그 주인의 프로필을 볼 수 있다.
-
-- 블로그 탭
-    - 각 유저마다 가입하면 글을 쓸 수 있게 되어있다. 글을 적은자나 운영자만 수정 및 삭제가 가능하다.
-    - 글의 내용은 제목, 내용, 썸네일 이미지, 카테고리로 되어있다.
-    - 키워드나 카테고리를 이용하여 검색이 가능하다.
-    - 댓글 작성이 가능하다.
-
-- 사용자 탭
-    - 회원가입, 로그인 로그아웃 기능이 있다.
-
-- 네비게이션 바
 ```mermaid
     flowchart TB
     index(메인화면) --> loginconfirm{로그인 하였는가?}
@@ -261,6 +288,7 @@
 ```
 
 - 글 작성
+
 ```mermaid
     flowchart TB
     list(글 목록) --> write(글 작성)
@@ -281,10 +309,49 @@
     update1 --> list2(글 목록)
     delete1 --> list2(글 목록)
 ```
+
+## 6. 데이터베이스 모델링(ERD)
+
+<img src="MyFirstBlog\static\images\ERD.png" width="40%">
+
+## 7. 버그 리포트
+
+### 7.1 M:N관계 데이터가 입력되지 않는 오류
+
+    - Q. 평소처럼 단순히 form으로 받아서 save를 하면 텅 빈 자료가 전송되는 오류가 있었습니다.
+
+    - A. html의 체크박스 value에는 숫자로 집어넣엇고, form.save_m2m()으로 M:N관계의 데이터는 따로 저장해서 적용시켰습니다.
+
+    ```python
+        def post(self, request):
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            form.save_m2m()
+        return redirect("post_list")
+    ```
+
+### 7.2 회원가입을 할 떄, 비밀번호가 해싱되지 않는 오류
+
+    - Q. Abstractuser를 상속받아 따로 유저폼을 만들어서 회원가입을 했더니 비밀번호가 제대로 들어오지 않았습니다.
+
+    - A. user.set_password()를 이용하여 비밀번호 암호화 처리를 해야만 제대로 사용이 가능한 비밀번호가 작성됩니다.
+
+    ```python
+        def post(self, request):
+        form = UserForm(request.POST, request.FILES)
+        if form.is_valid():
+            print(form.cleaned_data)
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data["password"])
+            user.save()
+            return redirect("post_list")
+    ```
+
 ## 8. 개발하며 느낀점
 - 버그 리포트를 기능 구현마다 꾸준히 쓰고, 기능 하나당 커밋 하나를 생활화 하는게 중요한 것 같다 아직 습관화가 안되있어서 정신없이 코딩하다보면 잊어버린다.
-
-- 생각 이상으로 많은 기능이 구현되어있지만, 정작 내가 원하는 하나가 없는경우가 꽤나 잇었다. 조금 마이너한기능을 원하는건가 싶기도 했다.
 
 - 믹스인 등 이미 구현된 클래스를 불러와 돌리는건 간편해서 좋지만 수정하거나 오류가 뜨면 구조를 모르는것이 맹점으로 다가와 해결하기 과하게 어려워진다.
 
