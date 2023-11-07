@@ -307,21 +307,6 @@
     logoutuser --> login(로그인)
 ```
 
-- 네비게이션 바
-```mermaid
-    flowchart TB
-    index(메인화면) --> loginconfirm{로그인 하였는가?}
-        loginconfirm --> |Yes| loginuser(로그인)
-        loginconfirm --> |No| logoutuser(로그아웃)
-
-    loginuser --> write(글 작성)
-    loginuser --> profile(프로필)
-    loginuser --> logout(로그아웃)
-
-    logoutuser --> register(회원가입)
-    logoutuser --> login(로그인)
-```
-
 - 글 작성
 ```mermaid
     flowchart TB
