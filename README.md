@@ -318,37 +318,37 @@
 
 ### 7.1 M:N관계 데이터가 입력되지 않는 오류
 
-    - Q. 평소처럼 단순히 form으로 받아서 save를 하면 텅 빈 자료가 전송되는 오류가 있었습니다.
+- Q. 평소처럼 단순히 form으로 받아서 save를 하면 텅 빈 자료가 전송되는 오류가 있었습니다.
 
-    - A. html의 체크박스 value에는 숫자로 집어넣엇고, form.save_m2m()으로 M:N관계의 데이터는 따로 저장해서 적용시켰습니다.
+- A. html의 체크박스 value에는 숫자로 집어넣엇고, form.save_m2m()으로 M:N관계의 데이터는 따로 저장해서 적용시켰습니다.
 
-    ```python
-        def post(self, request):
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            form.save_m2m()
-        return redirect("post_list")
-    ```
+```python
+    def post(self, request):
+    form = PostForm(request.POST, request.FILES)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.author = request.user
+        post.save()
+        form.save_m2m()
+    return redirect("post_list")
+```
 
 ### 7.2 회원가입을 할 떄, 비밀번호가 해싱되지 않는 오류
 
-    - Q. Abstractuser를 상속받아 따로 유저폼을 만들어서 회원가입을 했더니 비밀번호가 제대로 들어오지 않았습니다.
+- Q. Abstractuser를 상속받아 따로 유저폼을 만들어서 회원가입을 했더니 비밀번호가 제대로 들어오지 않았습니다.
 
-    - A. user.set_password()를 이용하여 비밀번호 암호화 처리를 해야만 제대로 사용이 가능한 비밀번호가 작성됩니다.
+- A. user.set_password()를 이용하여 비밀번호 암호화 처리를 해야만 제대로 사용이 가능한 비밀번호가 작성됩니다.
 
-    ```python
-        def post(self, request):
-        form = UserForm(request.POST, request.FILES)
-        if form.is_valid():
-            print(form.cleaned_data)
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data["password"])
-            user.save()
-            return redirect("post_list")
-    ```
+```python
+    def post(self, request):
+    form = UserForm(request.POST, request.FILES)
+    if form.is_valid():
+        print(form.cleaned_data)
+        user = form.save(commit=False)
+        user.set_password(form.cleaned_data["password"])
+        user.save()
+        return redirect("post_list")
+```
 
 ## 8. 개발하며 느낀점
 - 버그 리포트를 기능 구현마다 꾸준히 쓰고, 기능 하나당 커밋 하나를 생활화 하는게 중요한 것 같다 아직 습관화가 안되있어서 정신없이 코딩하다보면 잊어버린다.
