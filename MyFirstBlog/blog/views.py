@@ -181,3 +181,22 @@ class PostUpdateView(UserPassesTestMixin, UpdateView):
 class PostDeleteView(DeleteView):
     model = Post
     success_url = reverse_lazy("post_list")
+
+
+def test(request):
+    """
+    테스트용 더미 데이터 생성함수
+
+    현재 로그인된 사용자 기준으로 입력됨
+
+    예외처리는 하지 않앗으니 주의해서 사용
+    """
+    tags = ["한식", "중식", "일식", "양식", "집밥", "외식", "간편식"]
+    for i in range(1, 100):
+        title = f"{i}번글"
+        content = f"{i}번 내용"
+        tag, created = Tag.objects.get_or_create(name=tags[i % 7])
+        post = Post.objects.create(title=title, content=content, author=request.user)
+        post.tags.add(tag)
+        post.save()
+    return redirect("post_list")

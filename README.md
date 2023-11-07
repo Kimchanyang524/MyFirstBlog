@@ -207,19 +207,16 @@ C:.
 
 - 총괄 및 개발 : 김찬양
 
-## 5. UI / BM
+## 5. UI
 
-- 아래 페이지별 상세 설명, 더 큰 이미지로 하나하나씩 설명 필요
-<img src="ui.png" width="40%">
+- 글을 작성하는 기능입니다. 카테고리는 체크박스로 적용됩니다.
+<img src="MyFirstBlog\static\images\글 작성.png" width="40%">
 
-- 아래 페이지별 상세 설명, 가능하면 움직이는 gif로 실행되는 것을 보여주시면 좋습니다.
-<img src="ui1.png" width="40%">
+- 글을 수정하거나 삭제 시 작성자만 가능하게 하였습니다.
+<img src="MyFirstBlog\static\images\글 수정 및 삭제.png" width="40%">
 
-- 아래 페이지별 상세 설명, 가능하면 움직이는 gif로 실행되는 것을 보여주시면 좋습니다.
-<img src="ui2.png" width="40%">
-
-- 아래 페이지별 상세 설명, 가능하면 움직이는 gif로 실행되는 것을 보여주시면 좋습니다.
-<img src="ui3.png" width="40%">
+- 특정 키워드를 이용해 검색하거나, 카테고리 명을 클릭하면 해당 카테고리를 가진 글 목록으로 이동합니다.
+<img src="MyFirstBlog\static\images\검색, 태그검색.png" width="40%">
 
 ## 6. 데이터베이스 모델링(ERD)
 

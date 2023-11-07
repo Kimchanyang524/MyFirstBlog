@@ -36,7 +36,7 @@
                 <dl class="category">
                     <dt class="a11y-hidden">Category</dt>
                     {% for tag in post.tags.iterator %}
-                    <dd>{{tag}}</dd>
+                    <dd><a href="{% url 'post_search_tag' tag %}">{{ tag }}</a></dd>
                     {% endfor %}
                 </dl>
                 <!-- //category -->
