@@ -14,8 +14,19 @@
 
 ## 2. 개발 환경 및 배포 URL
 ### 2.1 개발 환경
+- 개발 툴
+  - Visual Studio Code 1.84.0
+
 - Web Framework
-  - Django 4.2.6 (Python 3.12.0)
+  - Django 4.2.6
+
+- FE
+  - HTML5
+  - Javascript
+  - CSS
+
+- BE
+  - Python 3.12.0
 
 ## 3. 프로젝트 구조와 개발 일정
 ### 3.1 프로젝트 구조
@@ -198,7 +209,29 @@ C:.
     \---main
             index.html
 ```
-### 3.1 개발 일정(WBS)
+### 3.2 URL 구조
+|app: main |views 함수 이름|html 파일이름|
+|:--------|:------------|:---------|
+|'/'       |index         |index.html |
+
+|app: accounts |views 함수 이름|html 파일이름   |
+|:------------|:------------|:------------|
+|'login/'      |login         |login.html    |
+|'logout/'     |logout        |
+|'register/'     |register        |register.html   |
+|'profile/'    |profile       |profile.html  |
+
+|app: blog  |views 함수 이름  |html 파일이름   |
+|:-------------|:--------------|:------------|
+|'/'|PostList.as_view()|post_list.html|
+|'\<int:pk\>/'|PostDetail.as_view()|post_detail.html|
+|'search/'|PostSearch.as_view()|post_list.html|
+|'search/\<str:tag\>/'|PostSearchTag.as_view()|post_list.html|
+|'write/'|PostCreateView.as_view()|post_form.html|
+|'edit/\<int:pk\>/'|PostUpdateView.as_view()|post_form.html|
+|'delete/\<int:pk\>/'|PostDeleteView.as_view()|post_confirm_delete.html|
+
+### 3.3 개발 일정(WBS)
 * 일정표는 https://www.notion.so/ 에서 작성되었습니다.
 * 관련된 스택 표시는 https://github.com/ 에서 작성되었습니다.
 <img src="MyFirstBlog\static\images\project_plan.png" width="40%">
@@ -252,3 +285,10 @@ C:.
 - 생각 이상으로 많은 기능이 구현되어있지만, 정작 내가 원하는 하나가 없는경우가 꽤나 잇었다. 조금 마이너한기능을 원하는건가 싶기도 했다.
 
 - 믹스인 등 이미 구현된 클래스를 불러와 돌리는건 간편해서 좋지만 수정하거나 오류가 뜨면 구조를 모르는것이 맹점으로 다가와 해결하기 과하게 어려워진다.
+
+## 9. 기술 출처
+- FE 기본 UI
+    - https://weniv.github.io/react-blog
+
+- Bootstrap
+    - https://getbootstrap.com/
