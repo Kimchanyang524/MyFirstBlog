@@ -25,8 +25,15 @@
   - Javascript
   - CSS
 
+- FE 기본 UI
+    - https://weniv.github.io/react-blog
+
+- Bootstrap
+    - https://getbootstrap.com/
+
 - BE
   - Python 3.12.0
+
 
 ## 3. 프로젝트 구조와 개발 일정
 ### 3.1 프로젝트 구조
@@ -34,21 +41,7 @@
 📦MyFirstBlog
  ┣ 📂accounts
  ┃ ┣ 📂migrations
- ┃ ┃ ┣ 📂__pycache__
- ┃ ┃ ┃ ┣ 📜0001_initial.cpython-312.pyc
- ┃ ┃ ┃ ┣ 📜0002_user_profile_img.cpython-312.pyc
- ┃ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
- ┃ ┃ ┣ 📜0001_initial.py
- ┃ ┃ ┣ 📜0002_user_profile_img.py
- ┃ ┃ ┗ 📜__init__.py
  ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜admin.cpython-312.pyc
- ┃ ┃ ┣ 📜apps.cpython-312.pyc
- ┃ ┃ ┣ 📜forms.cpython-312.pyc
- ┃ ┃ ┣ 📜models.cpython-312.pyc
- ┃ ┃ ┣ 📜urls.cpython-312.pyc
- ┃ ┃ ┣ 📜views.cpython-312.pyc
- ┃ ┃ ┗ 📜__init__.cpython-312.pyc
  ┃ ┣ 📜admin.py
  ┃ ┣ 📜apps.py
  ┃ ┣ 📜forms.py
@@ -59,21 +52,7 @@
  ┃ ┗ 📜__init__.py
  ┣ 📂blog
  ┃ ┣ 📂migrations
- ┃ ┃ ┣ 📂__pycache__
- ┃ ┃ ┃ ┣ 📜0001_initial.cpython-312.pyc
- ┃ ┃ ┃ ┣ 📜0002_post_next_post_post_previous_post.cpython-312.pyc
- ┃ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
- ┃ ┃ ┣ 📜0001_initial.py
- ┃ ┃ ┣ 📜0002_post_next_post_post_previous_post.py
- ┃ ┃ ┗ 📜__init__.py
  ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜admin.cpython-312.pyc
- ┃ ┃ ┣ 📜apps.cpython-312.pyc
- ┃ ┃ ┣ 📜forms.cpython-312.pyc
- ┃ ┃ ┣ 📜models.cpython-312.pyc
- ┃ ┃ ┣ 📜urls.cpython-312.pyc
- ┃ ┃ ┣ 📜views.cpython-312.pyc
- ┃ ┃ ┗ 📜__init__.cpython-312.pyc
  ┃ ┣ 📜admin.py
  ┃ ┣ 📜apps.py
  ┃ ┣ 📜forms.py
@@ -84,16 +63,7 @@
  ┃ ┗ 📜__init__.py
  ┣ 📂main
  ┃ ┣ 📂migrations
- ┃ ┃ ┣ 📂__pycache__
- ┃ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
- ┃ ┃ ┗ 📜__init__.py
  ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜admin.cpython-312.pyc
- ┃ ┃ ┣ 📜apps.cpython-312.pyc
- ┃ ┃ ┣ 📜models.cpython-312.pyc
- ┃ ┃ ┣ 📜urls.cpython-312.pyc
- ┃ ┃ ┣ 📜views.cpython-312.pyc
- ┃ ┃ ┗ 📜__init__.cpython-312.pyc
  ┃ ┣ 📜admin.py
  ┃ ┣ 📜apps.py
  ┃ ┣ 📜forms.py
@@ -113,14 +83,7 @@
  ┃ ┃ ┃ ┃ ┗ 📜ramen-1216048_1280.jpg
  ┃ ┃ ┃ ┣ 📂user_mura
  ┃ ┃ ┃ ┃ ┗ 📜gimbap.jpg
- ┃ ┃ ┃ ┣ 📂user_None
- ┃ ┃ ┃ ┃ ┣ 📜bibimbap.jpg
- ┃ ┃ ┃ ┃ ┣ 📜bibimbap_sK75POS.jpg
- ┃ ┃ ┃ ┃ ┣ 📜bibimbap_wi4tNIa.jpg
- ┃ ┃ ┃ ┃ ┗ 📜bibimbap_WMvjTeg.jpg
  ┃ ┃ ┃ ┣ 📂user_pipiman
- ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
- ┃ ┃ ┃ ┗ 📂user_qwerty
  ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
  ┃ ┗ 📂blog
  ┃ ┃ ┗ 📂images
@@ -129,14 +92,8 @@
  ┃ ┃ ┃ ┃ ┃ ┣ 📂26
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
  ┃ ┃ ┃ ┃ ┃ ┣ 📂30
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜3기-줌-배경-이미지_1.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜3기-줌-배경-이미지_1_DViZ8a6.jpg
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap.jpg
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_N36eYYo.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜코딩_기초_트레이닝_캘린더.png
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜코딩_기초_트레이닝_캘린더_z7VKDuJ.png
- ┃ ┃ ┃ ┃ ┃ ┗ 📂31
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜KakaoTalk_20221201_174736007.jpg
  ┃ ┃ ┃ ┃ ┗ 📂11
  ┃ ┃ ┃ ┃ ┃ ┣ 📂02
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
@@ -159,10 +116,6 @@
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜잡채.jpg
  ┣ 📂MyFirstblog
  ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜settings.cpython-312.pyc
- ┃ ┃ ┣ 📜urls.cpython-312.pyc
- ┃ ┃ ┣ 📜wsgi.cpython-312.pyc
- ┃ ┃ ┗ 📜__init__.cpython-312.pyc
  ┃ ┣ 📜asgi.py
  ┃ ┣ 📜settings.py
  ┃ ┣ 📜urls.py
@@ -234,19 +187,19 @@
  ┗ 📜manage.py
 ```
 ### 3.2 URL 구조
-|app: main      |views 함수 이름    |html 파일이름   |
-|:--------------|:------------------|:--------------|
-|'/'            |index              |index.html     |
+|app : main             |views 함수 이름            |html 파일이름             |
+|:----------------------|:--------------------------|:--------------------------|
+|'/'                    |index                      |index.html                 |
 
-|app: accounts |views 함수 이름|html 파일이름   |
-|:------------|:------------|:------------|
-|'login/'       |login          |login.html     |
-|'logout/'      |logout         |
-|'register/'    |register       |register.html  |
-|'profile/'     |profile        |profile.html   |
+|app : accounts         |views 함수 이름            |html 파일이름             |
+|:----------------------|:--------------------------|:--------------------------|
+|'login/'               |login                      |login.html                 |
+|'logout/'              |logout                     |
+|'register/'            |register                   |register.html              |
+|'profile/'             |profile                    |profile.html               |
 
-|app: blog  |views 함수 이름  |html 파일이름   |
-|:-------------|:--------------|:------------|
+|app : blog             |views 클래스 이름          |html 파일이름             |
+|:----------------------|:--------------------------|:--------------------------|
 |'/'                    |PostList.as_view()         |post_list.html             |
 |'\<int:pk\>/'          |PostDetail.as_view()       |post_detail.html           |
 |'search/'              |PostSearch.as_view()       |post_list.html             |
@@ -335,9 +288,3 @@
 
 - 믹스인 등 이미 구현된 클래스를 불러와 돌리는건 간편해서 좋지만 수정하거나 오류가 뜨면 구조를 모르는것이 맹점으로 다가와 해결하기 과하게 어려워진다.
 
-## 9. 기술 출처
-- FE 기본 UI
-    - https://weniv.github.io/react-blog
-
-- Bootstrap
-    - https://getbootstrap.com/
