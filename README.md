@@ -292,16 +292,56 @@
 - 사용자 탭
     - 회원가입, 로그인 로그아웃 기능이 있다.
 
-- 기타
-
+- 네비게이션 바
 ```mermaid
-    stateDiagram-v2
-    [*] --> 로그인
-    로그인 --> 성공
-    로그인 --> 실패
-    실패 --> 회원가입
-    회원가입 --> 로그인
-    성공 --> [*]
+    flowchart TB
+    index(메인화면) --> loginconfirm{로그인 하였는가?}
+        loginconfirm --> |Yes| loginuser(로그인)
+        loginconfirm --> |No| logoutuser(로그아웃)
+
+    loginuser --> write(글 작성)
+    loginuser --> profile(프로필)
+    loginuser --> logout(로그아웃)
+
+    logoutuser --> register(회원가입)
+    logoutuser --> login(로그인)
+```
+
+- 네비게이션 바
+```mermaid
+    flowchart TB
+    index(메인화면) --> loginconfirm{로그인 하였는가?}
+        loginconfirm --> |Yes| loginuser(로그인)
+        loginconfirm --> |No| logoutuser(로그아웃)
+
+    loginuser --> write(글 작성)
+    loginuser --> profile(프로필)
+    loginuser --> logout(로그아웃)
+
+    logoutuser --> register(회원가입)
+    logoutuser --> login(로그인)
+```
+
+- 글 작성
+```mermaid
+    flowchart TB
+    list(글 목록) --> write(글 작성)
+    list --> detail(글 자세히보기)
+    detail --> update(수정)
+    detail -->  delete(삭제)
+
+    write --> loginconfirm{로그인 하였는가?}
+        loginconfirm --> |Yes| create1(글 작성완료)
+    update --> loginconfirm{로그인 하였는가?}
+        loginconfirm --> |Yes| update1(수정완료)
+    delete --> loginconfirm{로그인 하였는가?}
+        loginconfirm --> |Yes| delete1(삭제완료)
+
+        loginconfirm --> |No| list
+
+    create1 --> list2(글 목록)
+    update1 --> list2(글 목록)
+    delete1 --> list2(글 목록)
 ```
 ## 8. 개발하며 느낀점
 - 버그 리포트를 기능 구현마다 꾸준히 쓰고, 기능 하나당 커밋 하나를 생활화 하는게 중요한 것 같다 아직 습관화가 안되있어서 정신없이 코딩하다보면 잊어버린다.
