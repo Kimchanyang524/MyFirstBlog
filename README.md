@@ -42,12 +42,7 @@
   - HTML5
   - Javascript
   - CSS
-
-- FE 기본 UI
-    - https://weniv.github.io/react-blog
-
-- Bootstrap
-    - https://getbootstrap.com/
+  - Bootstrap 5.3.2
 
 - BE
   - Python 3.12.0
