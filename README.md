@@ -48,9 +48,9 @@
   - Python 3.12.0
   - pip 23.3.1
   - asgiref 3.7.2
-  - Pillow==10.1.0
-  - sqlparse==0.4.4
-  - tzdata==2023.3
+  - Pillow 10.1.0
+  - sqlparse 0.4.4
+  - tzdata 2023.3
 
 
 ## 3. 프로젝트 구조와 개발 일정
