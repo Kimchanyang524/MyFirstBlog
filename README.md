@@ -31,8 +31,8 @@
   - Django 4.2.6
 
 - FE
-  - HTML5
-  - Javascript
+  - HTML
+  - JavaScript
   - CSS
   - Bootstrap 5.3.2
 
@@ -85,45 +85,14 @@
  ┣ 📂media
  ┃ ┣ 📂accounts
  ┃ ┃ ┗ 📂images
- ┃ ┃ ┃ ┣ 📂user_korean
- ┃ ┃ ┃ ┃ ┗ 📜spaghetti-1604836_1280.jpg
- ┃ ┃ ┃ ┣ 📂user_leehojun
- ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
- ┃ ┃ ┃ ┣ 📂user_licat
- ┃ ┃ ┃ ┃ ┗ 📜ramen-1216048_1280.jpg
- ┃ ┃ ┃ ┣ 📂user_mura
- ┃ ┃ ┃ ┃ ┗ 📜gimbap.jpg
- ┃ ┃ ┃ ┣ 📂user_pipiman
- ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
+ ┃ ┃ ┃ ┣ 📂user_username
+ ┃ ┃ ┃ ┃ ┗ 📜profile_img.jpg
  ┃ ┗ 📂blog
  ┃ ┃ ┗ 📂images
- ┃ ┃ ┃ ┗ 📂2023
- ┃ ┃ ┃ ┃ ┣ 📂10
- ┃ ┃ ┃ ┃ ┃ ┣ 📂26
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
- ┃ ┃ ┃ ┃ ┃ ┣ 📂30
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_N36eYYo.jpg
- ┃ ┃ ┃ ┃ ┗ 📂11
- ┃ ┃ ┃ ┃ ┃ ┣ 📂02
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bibimbap.jpg
- ┃ ┃ ┃ ┃ ┃ ┣ 📂06
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_eaxWN4k.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_EiipI8W.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_Gqqt7MR.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜gimbap.jpg
- ┃ ┃ ┃ ┃ ┃ ┗ 📂07
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bibimbap_HiE1dIX.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜gimbap.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜gimbap_8zYB8yS.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ramen-1216048_1280.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ramen-1216048_1280_9dky5OR.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ramen-1216048_1280_CuyoNNx.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜salad-5904093_1280.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜spaghetti-1604836_1280.jpg
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜잡채.jpg
+ ┃ ┃ ┃ ┗ 📂Year
+ ┃ ┃ ┃ ┃ ┣ 📂Month
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂Day
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜thumnail_img.jpg
  ┣ 📂MyFirstblog
  ┃ ┣ 📂__pycache__
  ┃ ┣ 📜asgi.py
@@ -133,51 +102,8 @@
  ┃ ┗ 📜__init__.py
  ┣ 📂static
  ┃ ┣ 📂assets
- ┃ ┃ ┣ 📜ArrowLeft-blue.svg
- ┃ ┃ ┣ 📜ArrowTop.svg
- ┃ ┃ ┣ 📜background.jpg
- ┃ ┃ ┣ 📜blank_profile.png
- ┃ ┃ ┣ 📜Facebook.svg
- ┃ ┃ ┣ 📜Github.svg
- ┃ ┃ ┣ 📜icon-delete-white.svg
- ┃ ┃ ┣ 📜icon-delete.svg
- ┃ ┃ ┣ 📜icon-like-white.svg
- ┃ ┃ ┣ 📜icon-like.svg
- ┃ ┃ ┣ 📜icon-login.svg
- ┃ ┃ ┣ 📜icon-logout.svg
- ┃ ┃ ┣ 📜icon-modify-white.svg
- ┃ ┃ ┣ 📜icon-modify.svg
- ┃ ┃ ┣ 📜icon-postlist.svg
- ┃ ┃ ┣ 📜icon-register.svg
- ┃ ┃ ┣ 📜icon-search.svg
- ┃ ┃ ┣ 📜Instagram.svg
- ┃ ┃ ┣ 📜Logo.svg
- ┃ ┃ ┣ 📜profile.jpg
- ┃ ┃ ┗ 📜Twitter.svg
  ┃ ┣ 📂css
- ┃ ┃ ┣ 📜about.css
- ┃ ┃ ┣ 📜author.css
- ┃ ┃ ┣ 📜banner.css
- ┃ ┃ ┣ 📜bootstrap.css
- ┃ ┃ ┣ 📜button.css
- ┃ ┃ ┣ 📜category.css
- ┃ ┃ ┣ 📜footer.css
- ┃ ┃ ┣ 📜global.css
- ┃ ┃ ┣ 📜header.css
- ┃ ┃ ┣ 📜main.css
- ┃ ┃ ┣ 📜post.css
- ┃ ┃ ┣ 📜posts.css
- ┃ ┃ ┣ 📜reset.css
- ┃ ┃ ┣ 📜view.css
- ┃ ┃ ┗ 📜wrapbox.css
  ┃ ┣ 📂images
- ┃ ┃ ┣ 📜background.jpg
- ┃ ┃ ┣ 📜ERD.png
- ┃ ┃ ┣ 📜profile.jpg
- ┃ ┃ ┣ 📜project_plan.png
- ┃ ┃ ┣ 📜검색, 태그검색.gif
- ┃ ┃ ┣ 📜글 수정 및 삭제.gif
- ┃ ┃ ┗ 📜글 작성.gif
  ┃ ┗ 📂js
  ┣ 📂templates
  ┃ ┣ 📂accounts
