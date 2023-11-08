@@ -19,6 +19,27 @@ from .forms import UserForm
 
 
 class MyRegister(CreateView):
+    """
+    회원가입을 시켜주는 클래스
+
+    사용자의 정보를 받아서 User테이블에 정보를 추가하고
+    블로그 글 목록으로 이동시키는 클래스입니다.
+
+    Args:
+        id: 아이디
+        password: 비밀번호
+        email: 이메일
+        nickname: 닉네임
+        profile_img: 프로필 이미지
+
+    Raises:
+        LogoutRequiredError: 이 클래스는 로그아웃을 요구한다.
+
+    Returns:
+        GET-None
+        POST-redirect("post_list"): post_list로 즉시 이동시켜줍니다.
+    """
+
     model = User
     form_class = UserForm
     template_name = "accounts/register.html"
