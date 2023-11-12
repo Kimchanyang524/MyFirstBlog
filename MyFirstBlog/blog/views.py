@@ -1,12 +1,7 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from typing import Any
-from django.db import models
-from django.http import HttpRequest, HttpResponse, Http404
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
-from django.core.paginator import Paginator
 
 # custom .py
 from .models import Post, Comment, Tag

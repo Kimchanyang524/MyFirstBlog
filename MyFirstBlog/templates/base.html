@@ -42,14 +42,14 @@
     <header>
         <div class="max-width">
             <h1>
-                <a href="{% url 'index' %}">
+                <a href="{% url 'main:index' %}">
                     <img src="{% static './assets/Logo.svg' %}" alt="My Blog">
                 </a>
             </h1>
             <ul>
                 {% if request.user.is_authenticated %}
                 <li class="profile-img">
-                    <a href="{% url 'profile' %}">
+                    <a href="{% url 'accounts:profile' %}">
                         {% if request.user.profile_img %}
                         <img src="{{ request.user.profile_img.url }}" alt="My Page">
                         {% else %}
@@ -79,13 +79,13 @@
                 </li>
                 {% else %}
                 <li>
-                    <a href="{% url 'register' %}" class="button">
+                    <a href="{% url 'accounts:register' %}" class="button">
                         <img src="{% static './assets/icon-register.svg' %}" alt="">
                         <span>회원가입</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'login' %}" class="button white">
+                    <a href="{% url 'accounts:login' %}" class="button white">
                         <img src="{% static './assets/icon-login.svg' %}" alt="">
                         <span>로그인</span>
                     </a>
@@ -110,7 +110,7 @@
     logout.addEventListener('click', function () {
         const form = confirm('정말 로그아웃하시겠습니까?')
         if (form) {
-            window.location.href = "{% url 'logout' %}"
+            window.location.href = "{% url 'accounts:logout' %}"
         }
     })
 </script>

@@ -29,7 +29,7 @@
                         <dl class="category">
                             <dt class="a11y-hidden">Category</dt>
                             {% for tag in post.tags.iterator %}
-                            <dd><a href="{% url 'post:search_tag' tag %}">{{tag}}</a></dd>
+                            <dd><a href="{% url 'search:tag' tag %}">{{tag}}</a></dd>
                             {% endfor %}
                         </dl>
                         <!-- //category -->
@@ -71,7 +71,7 @@
             <h3>카테고리</h3>
             <ul class="categories">
                 {% for tag in tags %}
-                <li><a href="{% url 'post:search_tag' tag %}">{{ tag }}</a></li>
+                <li><a href="{% url 'search:tag' tag %}">{{ tag }}</a></li>
                 {% endfor %}
             </ul>
             <h3>Follow</h3>
