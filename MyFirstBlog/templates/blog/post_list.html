@@ -32,7 +32,7 @@
                             {% for post in posts %}
                             <tr>
                                 <td>{{ post.id }}</td>
-                                <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
+                                <td><a href="{% url 'post:detail' post.id %}">{{ post.title }}</a></td>
                                 <td>{% if post.nickname %}{{ post.nickname }}{% else %}{{ post.author }}{% endif %}</td>
                                 <td>{{ post.created_at|date:'Y.m.d' }}</td>
                                 <td>{{ post.view_count }}</td>
@@ -71,11 +71,11 @@
             <h3>카테고리</h3>
             <ul class="categories">
                 {% for tag in tags %}
-                <li><a href="{% url 'post_search_tag' tag %}">{{ tag }}</a></li>
+                <li><a href="{% url 'post:search_tag' tag %}">{{ tag }}</a></li>
                 {% endfor %}
             </ul>
             <h3>검색</h3>
-            <form class="d-flex" action="{% url 'post_search' %}" method="get">
+            <form class="d-flex" action="{% url 'post:search' %}" method="get">
                 <input class="form-control me-2" type="text" placeholder="Search" name="search">
                 <button type="submit" class="button white"><img src="{% static './assets/icon-search.svg' %}" alt="My Blog"></button>
                 <input type="hidden" name="page" value="1">
