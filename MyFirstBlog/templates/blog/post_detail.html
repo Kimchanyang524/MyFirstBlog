@@ -98,17 +98,18 @@
                             </a>
                         </div>
                         <div class="col-md-2" style="display: block">
-                            {% if comment.author.nickname %}{{
-                            comment.author.nickname }}{% else %}{{
-                            comment.author }}{% endif %}
+                            {% if comment.author.nickname %}
+                                {{ comment.author.nickname }}
+                            {% else %}
+                                {{ comment.author }}
+                            {% endif %}
                         </div>
                         <div class="col-md-6">{{ comment.message }}</div>
                         <div class="col-md-2">
                             {{ comment.created_at|date:'Y.m.d H:i' }}
                         </div>
                         <div class="col-md-1">
-                            {% if request.user.is_staff or request.user ==
-                            comment.author %}
+                            {% if request.user.is_staff or request.user == comment.author %}
                             <div class="row">
                                 <div id="comment_modify{{comment.id}}">
                                     <button
@@ -134,7 +135,8 @@
                             {% endif %}
                         </div>
                         <hr />
-                        {% endfor %} {% if request.user.is_authenticated %}
+                        {% endfor %}
+                        {% if request.user.is_authenticated %}
                         <form action="" method="post" class="row">
                             {% csrf_token %}
                             <div class="col-md-1 profile-img">
@@ -153,9 +155,11 @@
                                 </a>
                             </div>
                             <div class="col-md-2">
-                                {% if request.user.nickname %}{{
-                                request.user.nickname }}{% else %}{{
-                                request.user }}{% endif %}
+                                {% if request.user.nickname %}
+                                    {{ request.user.nickname }}
+                                {% else %}
+                                    {{request.user }}
+                                {% endif %}
                             </div>
                             <div class="col-md-7">
                                 <textarea
@@ -173,18 +177,18 @@
                     </div>
                 </div>
                 {% if request.user.is_staff or request.user == post.author %}
-                <div class="btn-group">
-                    ...
-                    <a
-                        href="{% url 'post:update' post.id %}"
-                        class="btn-modify"
-                    >
-                        <span class="a11y-hidden">수정</span>
-                    </a>
-                    <button id="delete_bt" type="button" class="btn-delete">
-                        <span id="delete_sp" class="a11y-hidden">삭제</span>
-                    </button>
-                </div>
+                    <div class="btn-group">
+                        ...
+                        <a
+                            href="{% url 'post:update' post.id %}"
+                            class="btn-modify"
+                        >
+                            <span class="a11y-hidden">수정</span>
+                        </a>
+                        <button id="delete_bt" type="button" class="btn-delete">
+                            <span id="delete_sp" class="a11y-hidden">삭제</span>
+                        </button>
+                    </div>
                 {% endif %}
                 <a href="{% url 'post:list' %}" class="btn-back">
                     <span class="a11y-hidden">뒤로가기</span>
